@@ -65669,4 +65669,33 @@ create policy tenant_isolation_asaas_cobrancas_select on public.asaas_cobrancas
 comment on table public.asaas_cobrancas is
   'WhatsMeta: cobranças do Asaas que a empresa gerou para os próprios clientes, presas a um negócio. Membro lê; só as rotas escrevem (service role).';
 
+-- LGPD: a virada de `contacts.is_anonymized` apaga o texto livre das cobranças
+-- do contato (a descrição pode nomear a pessoa). Valor, situação, datas e ids do
+-- Asaas ficam: são registro financeiro com guarda exigida por lei. Security
+-- definer porque quem anonimiza pode não ter UPDATE nesta tabela (a sessão não
+-- escreve aqui) — e uma recusa abortaria a anonimização inteira.
+create or replace function public.fn_asaas_redige_cobrancas_de_contato_anonimizado()
+  returns trigger
+  language plpgsql
+  security definer
+  set search_path to ''
+as $$
+begin
+  update public.asaas_cobrancas
+     set descricao = null, updated_at = now()
+   where organization_id = new.organization_id
+     and contact_id = new.id
+     and descricao is not null;
+  return new;
+end$$;
+
+revoke execute on function public.fn_asaas_redige_cobrancas_de_contato_anonimizado() from public, anon, authenticated;
+
+drop trigger if exists trg_contacts_anonimizado_redige_cobrancas_asaas on public.contacts;
+create trigger trg_contacts_anonimizado_redige_cobrancas_asaas
+  after update of is_anonymized on public.contacts
+  for each row
+  when (new.is_anonymized = true and coalesce(old.is_anonymized, false) = false)
+  execute function public.fn_asaas_redige_cobrancas_de_contato_anonimizado();
+
 notify pgrst, 'reload schema';

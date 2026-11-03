@@ -70,3 +70,26 @@ execFileSync(
 // arquivo da rodada" — e passaria verde justamente na regressão que ele existe
 // para pegar (o setupFile sumir da config).
 process.env.DESKCOMM_INVARIANTS_DB_RESET = "1";
+
+// ─── WhatsMeta: o produto serve só português ────────────────────────────────
+// `IDIOMAS_DO_PRODUTO` (lib/i18n/registro.ts) restringe a interface a pt-BR.
+// A suíte herdada exercita o MECANISMO de idiomas (navegador, perfil, empresa,
+// catálogos) usando os idiomas que o registro marca como visíveis; aqui ela
+// continua enxergando todos eles, para o mecanismo seguir provado caso um
+// idioma volte a ser oferecido. A regra do PRODUTO tem teste próprio, que lê o
+// registro real: tests/unit/whatsmeta-so-portugues.test.ts (mesmo bloco de tests/setup/vitest.setup.ts).
+import { vi as viDoSetup } from "vitest";
+
+viDoSetup.mock("@/lib/i18n/registro", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@/lib/i18n/registro")>();
+  const todos = real.REGISTRO_DE_IDIOMAS.filter((idioma) =>
+    real.nivelApareceParaQuemUsa(idioma.nivel),
+  ) as unknown as typeof real.IDIOMAS_VISIVEIS;
+  return {
+    ...real,
+    IDIOMAS_DO_PRODUTO: todos.map((idioma) => idioma.codigo),
+    IDIOMAS_VISIVEIS: todos,
+    idiomaVisivelPorCodigo: (codigo: string) =>
+      todos.find((idioma) => idioma.codigo === codigo) ?? real.REGISTRO_DE_IDIOMAS[0],
+  };
+});

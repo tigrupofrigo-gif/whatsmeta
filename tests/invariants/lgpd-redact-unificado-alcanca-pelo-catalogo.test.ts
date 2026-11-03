@@ -237,6 +237,11 @@ const DECISOES: Record<string, Decisao> = {
     razao: "0482 (grupos na inbox, #1647): subject é o NOME do grupo e vira null; contact_id aponta para o placeholder do grupo (contacts.kind = 'whatsapp_group'), e número, conversa e liga/desliga ficam. O que o TITULAR escreveu em grupo é redigido pelo gatilho fn_redigir_conversas_ao_anonimizar, em messages.",
   },
   // ── redigir pela virada de is_anonymized (gatilho) ────────────────────────
+  asaas_cobrancas: {
+    decidida: "redigir",
+    caminho: "gatilho",
+    razao: "WhatsMeta 9900: descricao é texto livre da fatura e pode nomear a pessoa; fn_asaas_redige_cobrancas_de_contato_anonimizado a apaga na virada de is_anonymized. Valor, situação, datas e ids do Asaas ficam: registro financeiro com guarda exigida por lei, sem nome, telefone ou e-mail.",
+  },
   ai_reply_drafts: {
     decidida: "redigir",
     caminho: "gatilho",
