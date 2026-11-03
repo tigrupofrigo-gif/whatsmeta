@@ -843,6 +843,18 @@ export const NAV_CATALOG = [
     modulo: "honorarios",
   },
   {
+    // WhatsMeta: o painel de atendimento — volume, tempo de resposta e fila,
+    // por responsável, número de WhatsApp e período. Régua na
+    // `fn_relatorio_atendimento` (migration 9901).
+    href: "/app/relatorios",
+    label: "Relatórios de atendimento",
+    description: "Volume, tempo de resposta e fila, por responsável, número de WhatsApp e período, com gráficos e exportação.",
+    icon: "ChartLineUp",
+    group: "analise",
+    section: "Os números do período",
+    sidebar: true,
+  },
+  {
     href: "/app/metrics",
     label: "Desempenho",
     description: "Funil e performance por atendente nos últimos 30 dias.",
