@@ -76,7 +76,7 @@ discordarem, vale o guia; quando o guia e `install.sh` discordarem, vale o insta
    conectados; o QR vale poucos minutos).
 5. **Deixe pronto para durar:** o instalador já agenda o backup automático (banco com as
    conversas, sessões do WhatsApp e anexos) a cada 25 dias — `BACKUP_INTERVALO_DIAS` no `.env`
-   muda o intervalo; `BACKUP_FORCAR=1 bash hostgator-setup-kit/backup-agendado.sh` faz um agora e explique que atualizar é pela tela (menu → rodapé → "Nova
+   muda o intervalo; `BACKUP_FORCAR=1 bash hostgator-setup-kit/backup-agendado.sh` faz um agora. Explique que atualizar é pela tela (menu → rodapé → "Nova
    versão"); `bash hostgator-setup-kit/update.sh` é o caminho manual, com backup antes.
 
 ## Quando der problema (você resolve)
