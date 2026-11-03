@@ -1103,6 +1103,17 @@ export const NAV_CATALOG = [
     minRole: "admin",
   },
   {
+    // WhatsMeta: em Configurações, os dois jeitos de ligar um número (API
+    // oficial da Meta e QR Code). A conexão em si segue em Conexões.
+    href: "/app/settings/canais",
+    label: "Canais do WhatsApp",
+    description: "API oficial da Meta ou conexão não oficial por QR Code: escolha como cada número se conecta.",
+    icon: "PlugsConnected",
+    group: "organizacao",
+    section: "Sua empresa",
+    minRole: "admin",
+  },
+  {
     // WhatsMeta: a empresa conecta a própria conta do Asaas para cobrar os
     // clientes a partir dos negócios do funil (Pix, boleto, cartão).
     href: "/app/settings/asaas",

@@ -115,4 +115,37 @@ export const TEXTOS_ASAAS = {
   "Cancelada": { es: "Cancelado" },
   "Em processamento": { es: "En procesamiento" },
   "Cliente escolhe": { es: "El cliente elige" },
+  // Configurações › Canais do WhatsApp
+  "Canais do WhatsApp": { es: "Canales de WhatsApp" },
+  "API oficial da Meta ou conexão não oficial por QR Code: escolha como cada número se conecta.": {
+    es: "API oficial de Meta o conexión no oficial por código QR: elige cómo se conecta cada número.",
+  },
+  "Escolha como cada número da empresa se conecta. Dá para usar os dois ao mesmo tempo, em números diferentes.": {
+    es: "Elige cómo se conecta cada número de la empresa. Puedes usar los dos al mismo tiempo, en números distintos.",
+  },
+  "API oficial (Meta)": { es: "API oficial (Meta)" },
+  "Recomendada para volume e campanhas": { es: "Recomendada para volumen y campañas" },
+  "Número verificado pela Meta, sem risco de bloqueio por uso de aparelho.": {
+    es: "Número verificado por Meta, sin riesgo de bloqueo por uso de dispositivo.",
+  },
+  "Mensagens fora da janela de 24 horas só com modelos aprovados pela Meta.": {
+    es: "Mensajes fuera de la ventana de 24 horas solo con plantillas aprobadas por Meta.",
+  },
+  "Exige conta no Gerenciador de Negócios da Meta; a Meta cobra por conversa.": {
+    es: "Requiere cuenta en el Administrador comercial de Meta; Meta cobra por conversación.",
+  },
+  "Configurar API oficial": { es: "Configurar API oficial" },
+  "Não oficial (QR Code)": { es: "No oficial (código QR)" },
+  "Mais rápida para começar": { es: "La más rápida para empezar" },
+  "Conecta o WhatsApp do celular lendo um QR Code, em um minuto.": {
+    es: "Conecta el WhatsApp del celular leyendo un código QR, en un minuto.",
+  },
+  "Sem custo por mensagem e sem modelos aprovados.": { es: "Sin costo por mensaje y sin plantillas aprobadas." },
+  "O número pode ser bloqueado pelo WhatsApp se houver abuso; o sistema já limita o ritmo de envio.": {
+    es: "WhatsApp puede bloquear el número si hay abuso; el sistema ya limita el ritmo de envío.",
+  },
+  "Conectar por QR Code": { es: "Conectar por código QR" },
+  "Depois de conectado, cada número aparece em Conexões com a saúde da conexão, e as conversas chegam na Inbox do mesmo jeito, venham de um canal ou do outro.": {
+    es: "Una vez conectado, cada número aparece en Conexiones con el estado de la conexión, y las conversaciones llegan a la Bandeja de entrada igual, vengan de un canal o del otro.",
+  },
 } as const;
