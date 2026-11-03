@@ -86,6 +86,7 @@ fi
 # saem do script mais abaixo, e se o cron dependesse deles a atualização pela
 # tela nunca ligaria justamente em quem já está em dia. É idempotente.
 setup_update_agent_cron
+setup_backup_cron
 
 # ── 0+. O par VAPID também em quem não vai atualizar nada ───────────────────
 # A tela de Notificações manda rodar a atualização, sem --force. Quem já está na

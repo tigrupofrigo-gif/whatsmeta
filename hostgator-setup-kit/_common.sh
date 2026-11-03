@@ -3196,6 +3196,19 @@ setup_update_agent_cron() {
   c_grn "$(t "✓ atualização pela tela ativa (agente a cada 5 minutos)")"
 }
 
+# Ativa (idempotente) o BACKUP AUTOMÁTICO (WhatsMeta): o cron chama o
+# backup-agendado.sh todo dia às 03:17, e ele só faz o backup quando o último
+# tem BACKUP_INTERVALO_DIAS (padrão 25) dias ou mais — ver o cabeçalho dele.
+# Chamada por install.sh e update.sh; re-rodar não duplica a linha.
+setup_backup_cron() {
+  command -v crontab >/dev/null 2>&1 || { c_ylw "$(t "⚠ 'crontab' não encontrado — o backup automático não foi agendado. Instale o pacote 'cron' e rode de novo.")"; return 0; }
+  local legado="cd ${PROJECT_DIR} && bash hostgator-setup-kit/backup-agendado.sh"
+  local marcador; marcador="$(cron_tag backup)"
+  local cron_line="17 3 * * * ${legado} >/dev/null 2>&1 ${marcador}"
+  ( { crontab -l 2>/dev/null || true; } | cron_merge "$marcador" "$legado" "$cron_line" ) | crontab -
+  c_grn "$(t "✓ backup automático ativo (banco, conversas e anexos)") — $(t "a cada") ${BACKUP_INTERVALO_DIAS:-25} $(t "dias")"
+}
+
 # Garante a chave de cifra dos segredos (webhooks/Nuvemshop) e a semeia no
 # banco (private.app_secrets, migration 0041). Idempotente: reusa a chave do
 # .env se existir (trocá-la invalidaria dados já cifrados); gera se ausente e

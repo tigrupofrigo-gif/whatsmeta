@@ -2568,6 +2568,7 @@ ensure_encryption_key .env
 marcar_segredo_do_cron_como_novo
 setup_event_log_drain_cron
 setup_update_agent_cron
+setup_backup_cron
 
 # ── O marcador que diz que esta instalação EXISTE (#1778) ───────────────────
 # A guarda de arquitetura (#1042, contornada pelo #1266) precisa distinguir
