@@ -821,6 +821,12 @@ export const AUDIT_ACTIONS = [
   // decisão do cliente — cada um muda o que o negócio vale ou o que foi
   // oferecido, e é disputa comum entre quem atende e quem fecha.
   "proposal.drafted",
+  /** WhatsMeta — cobranças do Asaas que a empresa faz aos próprios clientes. */
+  "asaas.conectado",
+  "asaas.desconectado",
+  "asaas.cobranca_criada",
+  "asaas.cobranca_cancelada",
+  "asaas.cobranca_paga",
   "proposal.edited",
   "proposal.assistant_applied",
   "proposal.sent",

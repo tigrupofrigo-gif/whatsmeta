@@ -1103,6 +1103,17 @@ export const NAV_CATALOG = [
     minRole: "admin",
   },
   {
+    // WhatsMeta: a empresa conecta a própria conta do Asaas para cobrar os
+    // clientes a partir dos negócios do funil (Pix, boleto, cartão).
+    href: "/app/settings/asaas",
+    label: "Asaas",
+    description: "Cobre seus clientes por Pix, boleto ou cartão direto dos negócios do funil.",
+    icon: "Receipt",
+    group: "organizacao",
+    section: "Sua empresa",
+    minRole: "admin",
+  },
+  {
     href: "/app/lgpd/requests",
     label: "LGPD",
     description: "Pedidos de exportação e exclusão de dados feitos por clientes.",

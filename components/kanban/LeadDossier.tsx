@@ -17,6 +17,7 @@ import { RevisaoDoDocumento } from "./RevisaoDoDocumento";
 import { ScoreSlot } from "./ScoreSlot";
 import { LeadTimeline } from "./LeadTimeline";
 import { PropostasDoNegocio } from "./PropostasDoNegocio";
+import { CobrancasAsaasDoNegocio } from "./CobrancasAsaasDoNegocio";
 import { TarefasDoNegocio } from "./TarefasDoNegocio";
 import { OwnerBadge } from "./OwnerBadge";
 import { EtapaNoDossie } from "./EtapaNoDossie";
@@ -328,6 +329,13 @@ export function LeadDossier({
           leadId={lead.id}
           pipelineId={pipelineId}
           podeCriar={podeCriarProposta}
+        />
+
+        {/* Cobranças do Asaas do negócio, depois de "Propostas". */}
+        <CobrancasAsaasDoNegocio
+          leadId={lead.id}
+          podeCobrar={podeEditarTarefas}
+          podeConectar={user.is_platform_admin || (activeOrg ? ROLE_RANK[activeOrg.role] >= ROLE_RANK.admin : false)}
         />
       </SheetContent>
     </Sheet>

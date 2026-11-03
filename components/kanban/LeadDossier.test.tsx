@@ -63,6 +63,7 @@ vi.mock("./ContatoDoNegocio", () => ({ ContatoDoNegocio: () => <div data-peca="c
 vi.mock("./LeadFieldsForm", () => ({ LeadFieldsForm: () => <div data-peca="campos" /> }));
 vi.mock("./TarefasDoNegocio", () => ({ TarefasDoNegocio: () => <div data-peca="tarefas" /> }));
 vi.mock("./PropostasDoNegocio", () => ({ PropostasDoNegocio: () => null }));
+vi.mock("./CobrancasAsaasDoNegocio", () => ({ CobrancasAsaasDoNegocio: () => null }));
 vi.mock("./ConversaNoDossie", () => ({ ConversaNoDossie: () => null }));
 vi.mock("./ScoreSlot", () => ({ ScoreSlot: () => null }));
 vi.mock("./OwnerBadge", () => ({ OwnerBadge: () => null }));
