@@ -148,4 +148,10 @@ export const TEXTOS_ASAAS = {
   "Depois de conectado, cada número aparece em Conexões com a saúde da conexão, e as conversas chegam na Inbox do mesmo jeito, venham de um canal ou do outro.": {
     es: "Una vez conectado, cada número aparece en Conexiones con el estado de la conexión, y las conversaciones llegan a la Bandeja de entrada igual, vengan de un canal o del otro.",
   },
+  // Importação de contatos sem limite de linhas
+  "Envie um arquivo .csv com cabeçalho — colunas reconhecidas: nome, telefone, email, cpf, nascimento, tags. Excel: use “Salvar como” → “CSV UTF-8”. Sem limite de linhas: planilhas grandes são enviadas em partes, automaticamente.": {
+    es: "Envía un archivo .csv con encabezado — columnas reconocidas: nombre, teléfono, email, cpf, nacimiento, etiquetas. Excel: usa “Guardar como” → “CSV UTF-8”. Sin límite de filas: las hojas grandes se envían en partes, automáticamente.",
+  },
+  "Enviando parte": { es: "Enviando parte" },
+  "não feche esta janela.": { es: "no cierres esta ventana." },
 } as const;

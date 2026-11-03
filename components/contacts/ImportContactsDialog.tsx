@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useImportContacts } from "@/hooks/contacts/useImportContacts";
+import { useImportContacts, type ProgressoDaImportacao } from "@/hooks/contacts/useImportContacts";
 
 interface Props {
   open: boolean;
@@ -27,7 +27,8 @@ interface Props {
  */
 export function ImportContactsDialog({ open, onOpenChange }: Props) {
   const t = useT();
-  const importar = useImportContacts();
+  const [progresso, setProgresso] = useState<ProgressoDaImportacao | null>(null);
+  const importar = useImportContacts(setProgresso);
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [resumo, setResumo] = useState<Awaited<ReturnType<typeof importar.mutateAsync>> | null>(null);
@@ -35,6 +36,7 @@ export function ImportContactsDialog({ open, onOpenChange }: Props) {
   function reset() {
     setFile(null);
     setResumo(null);
+    setProgresso(null);
   }
 
   async function onSubmit(e: React.FormEvent) {
@@ -68,7 +70,7 @@ export function ImportContactsDialog({ open, onOpenChange }: Props) {
           <DialogTitle>{t("Importar contatos de planilha")}</DialogTitle>
           <DialogDescription>
             {t(
-              "Envie um arquivo .csv com cabeçalho — colunas reconhecidas: nome, telefone, email, cpf, nascimento, tags. Excel: use “Salvar como” → “CSV UTF-8”. Máximo de 500 linhas por arquivo.",
+              "Envie um arquivo .csv com cabeçalho — colunas reconhecidas: nome, telefone, email, cpf, nascimento, tags. Excel: use “Salvar como” → “CSV UTF-8”. Sem limite de linhas: planilhas grandes são enviadas em partes, automaticamente.",
             )}
           </DialogDescription>
         </DialogHeader>
@@ -91,6 +93,21 @@ export function ImportContactsDialog({ open, onOpenChange }: Props) {
                   </p>
                 )}
               </div>
+              {importar.isPending && progresso && progresso.totalDeLotes > 1 && (
+                <div className="space-y-1" role="status" aria-live="polite">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-surface">
+                    <div
+                      className="h-full bg-accent transition-all"
+                      style={{ width: `${Math.round((progresso.linhasEnviadas / Math.max(progresso.totalDeLinhas, 1)) * 100)}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t("Enviando parte")} {progresso.lote} {t("de")} {progresso.totalDeLotes} ·{" "}
+                    {progresso.linhasEnviadas.toLocaleString("pt-BR")} {t("de")} {progresso.totalDeLinhas.toLocaleString("pt-BR")}{" "}
+                    {t("linhas")} — {t("não feche esta janela.")}
+                  </p>
+                </div>
+              )}
               <DialogFooter>
                 <Button
                   type="button"
