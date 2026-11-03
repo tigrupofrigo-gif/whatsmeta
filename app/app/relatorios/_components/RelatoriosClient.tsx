@@ -345,7 +345,7 @@ export function RelatoriosClient() {
                     <Tooltip contentStyle={ESTILO_DO_TOOLTIP} labelFormatter={(d) => String(d).split("-").reverse().join("/")} />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
                     <Line type="monotone" dataKey="recebidas" name={t("Recebidas")} stroke="var(--color-accent)" strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="enviadas" name={t("Enviadas")} stroke="var(--color-text-muted)" strokeWidth={2} dot={false} />
+                    <Line type="monotone" dataKey="enviadas" name={t("Enviadas")} stroke="var(--color-text-muted)" strokeWidth={2} strokeDasharray="5 4" dot={false} />
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
