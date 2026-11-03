@@ -25,28 +25,20 @@
 
 ---
 
-> ### ☁️ Edição Hostinger — rode este CRM em produção com 1 comando
+> ### ☁️ WhatsMeta na Hostinger (KVM 2 · 8 GB) com Supabase
 >
-> Esta é a edição da **Thalena Lima** do [DeskcommCRM](https://github.com/melgarafael/DeskcommCRM),
-> com o passo a passo para instalar numa **VPS da Hostinger**. O código, o instalador e as
-> atualizações são os do projeto original — você instala direto de lá e recebe cada versão nova
-> pelo botão "Atualizar agora", sem depender desta página.
+> O WhatsMeta é instalado a partir **deste** repositório e roda as imagens publicadas pelo
+> GitHub dele (`ghcr.io/tigrupofrigo-gif/...`). Plano recomendado: **Hostinger KVM 2**
+> (2 vCPU / 8 GB, datacenter no Brasil). O banco fica no **Supabase** (na nuvem, ou no próprio
+> servidor). O backup do banco — conversas incluídas — é agendado pelo instalador.
 >
-> **[👉 Assinar a VPS Hostinger com o meu link](https://www.hostg.xyz/aff_c?offer_id=6&aff_id=221622&url_id=5038&source=deskcomm)** —
-> plano **KVM 2** (2 vCPU / 8 GB), com datacenter no Brasil.
->
-> 📘 **[Guia completo: DeskcommCRM na Hostinger, passo a passo](docs/deploy-hostinger/README.md)**
->
-> **Ainda não tem servidor?** Rode isto **no seu computador** (macOS, Linux ou WSL). Ele diz
-> qual plano contratar e te devolve o comando certo pro seu caso:
+> **Ainda não tem servidor?** Rode no seu computador (macOS, Linux ou WSL):
 >
 > ```bash
-> curl -fsSL https://raw.githubusercontent.com/thalena-lima/deskcomm/main/hostgator-setup-kit/comecar.sh | bash
+> curl -fsSL https://raw.githubusercontent.com/tigrupofrigo-gif/whatsmeta/main/hostgator-setup-kit/comecar.sh | bash
 > ```
 >
-> *(prefere ler antes de executar? clone o repo e rode `bash hostgator-setup-kit/comecar.sh` —
-> ele não instala nada sem você confirmar. A pasta se chama `hostgator-setup-kit` no projeto
-> original, mas o instalador é o mesmo para qualquer VPS, Hostinger incluída.)*
+> 📘 [Guia: instalação na Hostinger, passo a passo](docs/deploy-hostinger/README.md)
 ---
 
 ## ⚡ Instalar na sua VPS (o caminho principal)
@@ -74,8 +66,8 @@ travamento: é o terminal escondendo a senha. Digite (ou cole) e dê Enter.
 Já dentro da VPS:
 
 ```bash
-git clone https://github.com/melgarafael/DeskcommCRM.git
-cd DeskcommCRM
+git clone https://github.com/tigrupofrigo-gif/whatsmeta.git
+cd whatsmeta
 bash hostgator-setup-kit/install.sh
 ```
 
@@ -333,8 +325,8 @@ Detalhes: [`ARCHITECTURE.md`](ARCHITECTURE.md).
 > Esta seção é pra quem vai mexer no código.
 
 ```bash
-git clone https://github.com/melgarafael/DeskcommCRM.git
-cd DeskcommCRM
+git clone https://github.com/tigrupofrigo-gif/whatsmeta.git
+cd whatsmeta
 
 nvm use                     # Node 22
 npm install -g pnpm && pnpm install

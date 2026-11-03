@@ -46,7 +46,7 @@
  * reprova lá. Não remova essa derivação pensando que é redundante — ela é o que
  * torna a âncora não-falsificável de dentro do diff.
  */
-export const NAMESPACE_DESTE_REPO = "ghcr.io/melgarafael";
+export const NAMESPACE_DESTE_REPO = "ghcr.io/tigrupofrigo-gif";
 
 /**
  * O dono de uma referência `<registry>/<dono>`.
@@ -66,6 +66,9 @@ export function donoDo(namespace: string): string {
 
 /** O dono deste repositório, derivado da âncora — ele não é escrito duas vezes. */
 export const DONO_DESTE_REPO = donoDo(NAMESPACE_DESTE_REPO);
+
+/** O nome do repositório no GitHub (WhatsMeta: o fork se chama `whatsmeta`). */
+export const NOME_DESTE_REPO = "whatsmeta";
 
 /**
  * O dono da conta que EXECUTA o workflow, ou `null` fora do GitHub Actions.
