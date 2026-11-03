@@ -477,7 +477,7 @@ sincronizar_smtp_do_gotrue() {
   set_env_var "$env_sb" SMTP_USER "$(valor_compose "$usuario")"
   set_env_var "$env_sb" SMTP_PASS "$(valor_compose "$senha")"
   set_env_var "$env_sb" SMTP_ADMIN_EMAIL "$(valor_compose "$remetente")"
-  set_env_var "$env_sb" SMTP_SENDER_NAME "$(valor_compose "${nome:-${APP_NAME:-DeskcommCRM}}")"
+  set_env_var "$env_sb" SMTP_SENDER_NAME "$(valor_compose "${nome:-${APP_NAME:-WhatsMeta}}")"
 }
 
 # A Resend também fala SMTP (smtp.resend.com:465, usuário `resend`, senha = a
