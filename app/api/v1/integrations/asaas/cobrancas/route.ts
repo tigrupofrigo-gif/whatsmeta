@@ -21,6 +21,7 @@ import { audit } from "@/lib/audit";
 import { requireRole } from "@/lib/auth/require-role";
 import { documentoDoPagador } from "@/lib/cobranca/documento";
 import { ErroDoProvedor } from "@/lib/cobranca/provedores/contrato";
+import { nomeDoContato } from "@/lib/contacts/rotulo-do-contato";
 import { traduzir } from "@/lib/i18n/dicionario";
 import { requireSupportWrite } from "@/lib/impersonate/support";
 import { emitLeadActivity } from "@/lib/leads/activity-emitter";
@@ -141,7 +142,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   try {
     const clienteId = await empresa.cliente.garantirCliente({
       id: contato.id,
-      nome: (contato.display_name || contato.name || "Cliente").slice(0, 100),
+      nome: (nomeDoContato(contato) ?? "Cliente").slice(0, 100),
       documento,
       email: contato.email ?? null,
       telefone: telefone && /^\d{10,11}$/.test(telefone) ? telefone : null,
