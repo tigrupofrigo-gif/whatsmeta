@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SeletorDeIdioma } from "@/components/shell/SeletorDeIdioma";
+import { IDIOMAS_VISIVEIS } from "@/lib/i18n/registro";
 import { useT } from "@/hooks/i18n/useT";
 import Link from "next/link";
 import { SignOut, ShieldCheck } from "@/lib/ui/icons";
@@ -32,7 +33,8 @@ export function UserMenu() {
 
   return (
     <div className="flex items-center gap-2">
-      <SeletorDeIdioma />
+      {/* Com um idioma só não há o que escolher: o botão some. */}
+      {IDIOMAS_VISIVEIS.length > 1 && <SeletorDeIdioma />}
       <ThemeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

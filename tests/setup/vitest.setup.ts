@@ -202,3 +202,26 @@ if (typeof criarObjectURL === "function") {
     URL.revokeObjectURL = () => {};
   }
 }
+
+// ─── WhatsMeta: o produto serve só português ────────────────────────────────
+// `IDIOMAS_DO_PRODUTO` (lib/i18n/registro.ts) restringe a interface a pt-BR.
+// A suíte herdada exercita o MECANISMO de idiomas (navegador, perfil, empresa,
+// catálogos) usando os idiomas que o registro marca como visíveis; aqui ela
+// continua enxergando todos eles, para o mecanismo seguir provado caso um
+// idioma volte a ser oferecido. A regra do PRODUTO tem teste próprio, que lê o
+// registro real: tests/unit/whatsmeta-so-portugues.test.ts.
+import { vi as viDoSetup } from "vitest";
+
+viDoSetup.mock("@/lib/i18n/registro", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@/lib/i18n/registro")>();
+  const todos = real.REGISTRO_DE_IDIOMAS.filter((idioma) =>
+    real.nivelApareceParaQuemUsa(idioma.nivel),
+  ) as unknown as typeof real.IDIOMAS_VISIVEIS;
+  return {
+    ...real,
+    IDIOMAS_DO_PRODUTO: todos.map((idioma) => idioma.codigo),
+    IDIOMAS_VISIVEIS: todos,
+    idiomaVisivelPorCodigo: (codigo: string) =>
+      todos.find((idioma) => idioma.codigo === codigo) ?? real.REGISTRO_DE_IDIOMAS[0],
+  };
+});
