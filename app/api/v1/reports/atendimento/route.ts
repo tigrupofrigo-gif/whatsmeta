@@ -127,10 +127,14 @@ export async function GET(req: NextRequest): Promise<Response> {
         nome: r.user_id ? (nomes.get(r.user_id) ?? null) : null,
       })),
       opcoes: {
-        canais: (canais ?? []).map((c) => ({
-          id: (c as { id: string }).id,
-          nome: (c as { display_name: string | null }).display_name || (c as { phone_number: string | null }).phone_number || "",
-        })),
+        // O rótulo do NÚMERO de WhatsApp (não de contato): o nome dado à
+        // conexão, ou o telefone dela.
+        canais: ((canais ?? []) as Array<{ id: string; display_name: string | null; phone_number: string | null }>).map(
+          (numero) => ({
+            id: numero.id,
+            nome: [numero.display_name, numero.phone_number].find((v) => (v ?? "").trim() !== "") ?? "",
+          }),
+        ),
         responsaveis: (gerente ? equipe.map((m) => m.user_id) : [authz.user.id]).map((id) => ({
           id,
           nome: nomes.get(id) ?? null,
