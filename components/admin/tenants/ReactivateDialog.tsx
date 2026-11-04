@@ -85,13 +85,13 @@ export function ReactivateDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            {t("Reativar tenant")}
+            {t("Reativar empresa")}
             {/* O alvo da reativação, escrito na linha de cima (#2778). */}
             {displayName ? <span className="font-normal"> {displayName}</span> : null}
           </AlertDialogTitle>
           <AlertDialogDescription>
             {t(
-              "A reativação restabelece o acesso dos usuários deste tenant à plataforma. Informe o motivo da reativação para o registro de auditoria.",
+              "A reativação restabelece o acesso dos usuários desta empresa à plataforma. Informe o motivo da reativação para o registro de auditoria.",
             )}
           </AlertDialogDescription>
         </AlertDialogHeader>

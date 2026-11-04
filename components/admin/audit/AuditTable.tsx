@@ -57,7 +57,7 @@ export function AuditTableSkeleton() {
       <Table>
         <TableHeader>
           <TableRow>
-            {[t("Quando"), "Action", "Tenant", "Actor", t("Recurso"), ""].map((h) => (
+            {[t("Quando"), t("Ação"), t("Empresa"), t("Quem agiu"), t("Recurso"), ""].map((h) => (
               <TableHead key={h}>{h}</TableHead>
             ))}
           </TableRow>
@@ -90,7 +90,7 @@ function EmptyState() {
         {t("Nenhum evento encontrado")}
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        {t("Ajuste os filtros para ver entradas do audit log.")}
+        {t("Ajuste os filtros para ver registros da auditoria.")}
       </p>
     </div>
   );
@@ -126,9 +126,9 @@ export function AuditTable({
           <TableHeader>
             <TableRow>
               <TableHead className="w-[130px]">{t("Quando")}</TableHead>
-              <TableHead>Action</TableHead>
-              <TableHead className="w-[130px]">Tenant</TableHead>
-              <TableHead className="w-[160px]">Actor</TableHead>
+              <TableHead>{t("Ação")}</TableHead>
+              <TableHead className="w-[130px]">{t("Empresa")}</TableHead>
+              <TableHead className="w-[160px]">{t("Quem agiu")}</TableHead>
               <TableHead className="w-[180px]">{t("Recurso")}</TableHead>
               <TableHead className="w-[60px]" />
             </TableRow>

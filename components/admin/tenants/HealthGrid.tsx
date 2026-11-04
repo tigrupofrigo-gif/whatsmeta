@@ -136,7 +136,7 @@ export function HealthGrid({ health }: HealthGridProps) {
       />
 
       <HealthCard
-        title="Audit Lag"
+        title={t("Atraso da auditoria")}
         status={audit.status}
         icon={<ClipboardText size={18} aria-hidden />}
         primaryValue={auditPrimary}

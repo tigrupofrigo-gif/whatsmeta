@@ -44,18 +44,18 @@ const EXPLICACAO = /não pode ser excluída enquanto houver cobrança pendente/;
 describe("TenantActions — excluir", () => {
   it("suspensão administrativa: o botão aparece", () => {
     render(<TenantActions organization={ORG} counts={COUNTS} />);
-    expect(screen.getByRole("button", { name: "Excluir tenant" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Excluir empresa" })).toBeInTheDocument();
     expect(screen.queryByText(EXPLICACAO)).toBeNull();
   });
 
   it("suspensão sem tipo (nula) vale como administrativa", () => {
     render(<TenantActions organization={{ ...ORG, suspended_kind: null }} counts={COUNTS} />);
-    expect(screen.getByRole("button", { name: "Excluir tenant" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Excluir empresa" })).toBeInTheDocument();
   });
 
   it("suspensão por cobrança: sem botão, com a explicação", () => {
     render(<TenantActions organization={{ ...ORG, suspended_kind: "cobranca" }} counts={COUNTS} />);
-    expect(screen.queryByRole("button", { name: "Excluir tenant" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Excluir empresa" })).toBeNull();
     expect(screen.getByText(EXPLICACAO)).toBeInTheDocument();
   });
 });

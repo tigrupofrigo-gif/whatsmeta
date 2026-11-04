@@ -85,7 +85,7 @@ export function SuspendDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            {t("Suspender tenant")}
+            {t("Suspender empresa")}
             {/* O ALVO da suspensão, na linha de cima: este diálogo abre a partir
                 da listagem (#2778) e quem opera 20 tenants precisa ver quem vai
                 ser suspenso antes de confirmar. */}

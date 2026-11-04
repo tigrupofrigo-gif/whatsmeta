@@ -154,7 +154,7 @@ export function IncidentDetailClient({ id }: IncidentDetailClientProps) {
         {/* Audit timeline */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm font-medium">Audit Trail</CardTitle>
+            <CardTitle className="text-sm font-medium">{t("Trilha de auditoria")}</CardTitle>
           </CardHeader>
           <CardContent>
             {incident.audit_trail.length === 0 ? (

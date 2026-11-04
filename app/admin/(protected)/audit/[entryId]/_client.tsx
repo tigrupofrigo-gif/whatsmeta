@@ -90,7 +90,7 @@ export function AuditDetailClient({ entryId }: AuditDetailClientProps) {
   if (isError || !detail) {
     return (
       <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-6 py-10 text-center text-sm text-destructive">
-        {t("Entrada de audit não encontrada.")}
+        {t("Registro de auditoria não encontrado.")}
       </div>
     );
   }
@@ -104,7 +104,7 @@ export function AuditDetailClient({ entryId }: AuditDetailClientProps) {
       <Button asChild variant="ghost" size="sm" className="gap-1.5 -ml-2">
         <Link href="/admin/audit">
           <CaretLeft size={14} aria-hidden />
-          {t("Audit Log")}
+          {t("Registro de auditoria")}
         </Link>
       </Button>
 
@@ -145,7 +145,7 @@ export function AuditDetailClient({ entryId }: AuditDetailClientProps) {
             <Row label="Bypassed RLS" value={entry.bypassed_rls ? t("Sim") : t("Não")} />
             <Row label="Actor IP" value={entry.actor_ip ?? "—"} mono />
             <Row
-              label="User Agent"
+              label={t("Navegador")}
               value={entry.actor_user_agent ?? "—"}
               truncate
             />
@@ -156,11 +156,11 @@ export function AuditDetailClient({ entryId }: AuditDetailClientProps) {
         <div className="space-y-4">
           {/* Actor card */}
           <div className="rounded-md border p-4 space-y-2">
-            <h2 className="text-sm font-medium">Actor</h2>
+            <h2 className="text-sm font-medium">{t("Quem agiu")}</h2>
             {actor ? (
               <div className="space-y-1 text-sm">
-                <Row label="User ID" value={actor.id} mono />
-                <Row label="Email" value={maskEmail(actor.email)} />
+                <Row label={t("ID do usuário")} value={actor.id} mono />
+                <Row label={t("E-mail")} value={maskEmail(actor.email)} />
               </div>
             ) : (
               <p className="text-sm text-muted-foreground">
@@ -174,15 +174,15 @@ export function AuditDetailClient({ entryId }: AuditDetailClientProps) {
           {/* Tenant card */}
           {tenant && (
             <div className="rounded-md border p-4 space-y-2">
-              <h2 className="text-sm font-medium">Tenant</h2>
+              <h2 className="text-sm font-medium">{t("Empresa")}</h2>
               <div className="space-y-1 text-sm">
                 <Row label={t("Nome")} value={tenant.display_name} />
-                <Row label="Slug" value={tenant.slug} mono />
+                <Row label={t("Identificador")} value={tenant.slug} mono />
                 <Row label={t("Status")} value={tenant.status} />
               </div>
               <Button asChild variant="outline" size="sm" className="mt-2">
                 <Link href={`/admin/tenants/${tenant.id}`}>
-                  {t("Ver tenant")}
+                  {t("Ver empresa")}
                 </Link>
               </Button>
             </div>

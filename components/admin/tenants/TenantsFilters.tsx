@@ -53,11 +53,11 @@ export function TenantsFilters({ filters, onChange }: TenantsFiltersProps) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
       <Input
-        placeholder={t("Buscar por nome, slug ou CNPJ...")}
+        placeholder={t("Buscar por nome, identificador ou CNPJ...")}
         value={inputValue}
         onChange={(e) => handleSearch(e.target.value)}
         className="sm:w-80"
-        aria-label={t("Buscar tenants")}
+        aria-label={t("Buscar empresas")}
       />
       <Select
         value={filters.status ?? "all"}

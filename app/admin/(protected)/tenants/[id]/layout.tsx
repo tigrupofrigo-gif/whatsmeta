@@ -80,7 +80,7 @@ export default async function TenantDetailLayout({ children, params }: TenantLay
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <CaretLeft size={14} aria-hidden />
-        {traduzir("Tenants", idioma)}
+        {traduzir("Empresas", idioma)}
       </Link>
 
       {/* Header */}

@@ -71,7 +71,7 @@ test("sem a chave, nada da cobrança aparece e o que existia segue igual", async
 
     // ── O dono: nada de cobrança no admin ───────────────────────────────────
     await page.goto("/admin/dashboard");
-    await expect(page.getByRole("link", { name: "Tenants" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Empresas" }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Cobrança" })).toHaveCount(0);
     expect((await page.goto("/admin/cobranca"))?.status()).toBe(404);
 

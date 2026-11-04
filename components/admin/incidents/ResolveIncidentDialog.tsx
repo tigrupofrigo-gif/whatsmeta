@@ -54,7 +54,7 @@ export function ResolveIncidentDialog({ incidentId }: ResolveIncidentDialogProps
           <AlertDialogTitle>{t("Resolver incidente")}</AlertDialogTitle>
           <AlertDialogDescription>
             {t(
-              "Descreva como o incidente foi resolvido. Esta ação é registrada no audit log e não pode ser desfeita.",
+              "Descreva como o incidente foi resolvido. Esta ação é registrada na auditoria e não pode ser desfeita.",
             )}
           </AlertDialogDescription>
         </AlertDialogHeader>

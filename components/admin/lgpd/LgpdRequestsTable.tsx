@@ -100,7 +100,7 @@ export function LgpdRequestsTableSkeleton() {
       <Table>
         <TableHeader>
           <TableRow>
-            {["ID", t("Tipo"), "Tenant", t("Recebido em"), t("Vence em"), t("Risco"), t("Status"), ""].map(
+            {["ID", t("Tipo"), t("Empresa"), t("Recebido em"), t("Vence em"), t("Risco"), t("Status"), ""].map(
               (h) => (
                 <TableHead key={h}>{h}</TableHead>
               ),
@@ -168,7 +168,7 @@ export function LgpdRequestsTable({
             <TableRow>
               <TableHead className="w-[90px]">ID</TableHead>
               <TableHead>{t("Tipo")}</TableHead>
-              <TableHead className="w-[160px]">Tenant</TableHead>
+              <TableHead className="w-[160px]">{t("Empresa")}</TableHead>
               <TableHead className="w-[130px]">{t("Recebido em")}</TableHead>
               <TableHead className="w-[130px]">{t("Vence em")}</TableHead>
               <TableHead className="w-[80px]">{t("Risco")}</TableHead>

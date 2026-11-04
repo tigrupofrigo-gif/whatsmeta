@@ -198,7 +198,7 @@ test("o dono cria o plano, os limites valem pela tela, e prazo e desligar a chav
     await expect(page.getByRole("status").filter({ hasText: "Suspensa por falta de pagamento" })).toBeVisible();
     // D-6: a tela diz o TIPO e não oferece o botão genérico, que a rota recusaria.
     await expect(page.getByTestId("tipo-da-suspensao")).toHaveText("Suspensa por falta de pagamento");
-    await expect(page.getByRole("button", { name: "Reativar tenant" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Reativar empresa" })).toHaveCount(0);
     await page.locator("#prazo-ate").fill(diaDaqui(10));
     await page.getByRole("button", { name: "Dar prazo" }).click();
     await expect.poll(async () => (await estadoDaOrg(orgB)).status).toBe("active");

@@ -174,7 +174,7 @@ export function UsageCharts({ series }: UsageChartsProps) {
 
       {/* AI Tokens per day — full width */}
       <div className="md:col-span-2">
-        <ChartCard title={t("AI Tokens / dia")}>
+        <ChartCard title={t("Tokens de IA / dia")}>
           {!hasTokens ? (
             <EmptyChart />
           ) : (

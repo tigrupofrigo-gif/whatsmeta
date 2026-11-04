@@ -1193,7 +1193,7 @@ export const DICIONARIO: Traducoes = {
   "Versão publicada": { es: "Versión publicada" },
   "Publicado em": { es: "Publicado el" },
   "Nenhum agente publicado": { es: "Ningún agente publicado" },
-  "Não foi possível carregar o agente do tenant. Tente recarregar a página.": { es: "No se pudo cargar el agente del tenant. Intenta recargar la página." },
+  "Não foi possível carregar o agente da empresa. Tente recarregar a página.": { es: "No se pudo cargar el agente dla empresa. Intenta recargar la página." },
   "números de teste autorizados": { es: "números de prueba autorizados" },
   "1 número de teste autorizado": { es: "1 número de prueba autorizado" },
   "Nenhum número autorizado — a IA não responde ninguém neste canal.": {
@@ -1639,6 +1639,7 @@ export const DICIONARIO: Traducoes = {
   Desempenho: { es: "Rendimiento" },
   "Evolução da IA": { es: "Evolución de la IA" },
   "Audit Log": { es: "Registro de auditoría" },
+  "Registro de auditoria": { es: "Registro de auditoría" },
   Configurações: { es: "Configuración" },
   Recolher: { es: "Contraer" },
   Buscar: { es: "Buscar" },
@@ -5366,9 +5367,9 @@ export const DICIONARIO: Traducoes = {
   "Voltar para /app": { es: "Volver a /app" },
   "Menu de navegação": { es: "Menú de navegación" },
   "Abrir menu de navegação": { es: "Abrir menú de navegación" },
-  "Admin Plataforma": { es: "Admin de la plataforma" },
+  "Painel da plataforma": { es: "Admin de la plataforma" },
   "MODO PLATAFORMA": { es: "MODO PLATAFORMA" },
-  "— operação cross-tenant": { es: "— operación cross-tenant" },
+  "— visão de todas as empresas": { es: "— operación todas las empresas" },
   "Modo Plataforma": { es: "Modo plataforma" },
   "Sair pra app pessoal": { es: "Salir a la app personal" },
   "Aviso: sem SMTP na instalação": { es: "Aviso: sin SMTP en la instalación" },
@@ -5376,20 +5377,23 @@ export const DICIONARIO: Traducoes = {
     es: "Invitaciones, recuperación de contraseña y avisos por correo no salen por SMTP hasta configurarlo aquí.",
   },
   "Configurar em /admin/email": { es: "Configurar en /admin/email" },
+  "Identificador": { es: "Identificador" },
+  "Abrir empresa": { es: "Abrir empresa" },
+  "ID do usuário": { es: "ID del usuario" },
+  "Atraso da auditoria": { es: "Retraso de la auditoría" },
+  "ID do usuário que agiu": { es: "ID del usuario que actuó" },
+  "Quem agiu": { es: "Quién actuó" },
   "Navegação plataforma": { es: "Navegación de la plataforma" },
   "Voltar pra app": { es: "Volver a la app" },
-  Dashboard: { es: "Panel" },
-  Tenants: { es: "Tenants" },
-  Audit: { es: "Auditoría" },
-  Incidents: { es: "Incidentes" },
-  Usage: { es: "Uso" },
+  "Painel": { es: "Panel" },
+  "Consumo": { es: "Uso" },
   Users: { es: "Usuarios" },
-  "Platform Admins": { es: "Administradores de la plataforma" },
+  "Administradores": { es: "Administradores de la plataforma" },
   Marca: { es: "Marca" },
   LGPD: { es: "LGPD" },
-  "Não foi possível iniciar impersonate": { es: "No se pudo iniciar el impersonate" },
-  "Erro de rede ao iniciar impersonate": { es: "Error de red al iniciar el impersonate" },
-  "Impersonate indisponível": { es: "Impersonate no disponible" },
+  "Não foi possível iniciar o acompanhamento": { es: "No se pudo iniciar el seguimiento" },
+  "Erro de rede ao iniciar o acompanhamento": { es: "Error de red al iniciar el seguimiento" },
+  "Acompanhamento indisponível": { es: "Seguimiento no disponible" },
   "Acompanhar": { es: "Dar seguimiento" },
   "Acompanhe": { es: "Da seguimiento a" },
   "Acompanhar organização": { es: "Dar seguimiento a la organización" },
@@ -5411,8 +5415,8 @@ export const DICIONARIO: Traducoes = {
   "Confirmar e entrar": { es: "Confirmar y entrar" },
 
   // ─── Admin de plataforma: Dashboard ───
-  "Visão cross-tenant — atualiza a cada 30 segundos.": {
-    es: "Vista cross-tenant. Se actualiza cada 30 segundos.",
+  "Visão de todas as empresas — atualiza a cada 30 segundos.": {
+    es: "Vista todas las empresas. Se actualiza cada 30 segundos.",
   },
   "IA Budget": { es: "Presupuesto IA" },
   Overflow: { es: "Desborde" },
@@ -5426,7 +5430,7 @@ export const DICIONARIO: Traducoes = {
   alerta: { es: "alerta" },
   alertas: { es: "alertas" },
   "alertas adicionais": { es: "alertas adicionales" },
-  "Tenants Ativos": { es: "Tenants activos" },
+  "Empresas ativas": { es: "Empresas activos" },
   "organizações ativas": { es: "organizaciones activas" },
   "Pendentes >10min": { es: "Pendientes >10min" },
   "conversas sem resposta": { es: "conversaciones sin respuesta" },
@@ -5434,27 +5438,25 @@ export const DICIONARIO: Traducoes = {
   "LGPD em Risco": { es: "LGPD en riesgo" },
   "requisições próximas do prazo": { es: "solicitudes próximas a vencer" },
   "Budgets IA": { es: "Presupuestos IA" },
-  "tenants com gasto acumulado ≥80% do teto": {
-    es: "tenants con gasto acumulado ≥80% del tope",
+  "empresas com gasto acumulado ≥80% do teto": {
+    es: "empresas con gasto acumulado ≥80% del tope",
   },
 
   // ─── Admin de plataforma: Tenants (lista + criação) ───
-  "Novo tenant": { es: "Nuevo tenant" },
-  "Buscar por nome, slug ou CNPJ...": { es: "Buscar por nombre, slug o CNPJ..." },
-  "Buscar tenants": { es: "Buscar tenants" },
+  "Buscar por nome, identificador ou CNPJ...": { es: "Buscar por nombre, slug o CNPJ..." },
   Onboarding: { es: "Onboarding" },
   Suspenso: { es: "Suspendido" },
   Redigido: { es: "Anonimizado" },
   Conversas: { es: "Conversaciones" },
-  "Nenhum tenant encontrado": { es: "No se encontró ningún tenant" },
-  "Ajuste os filtros ou crie um novo tenant.": {
-    es: "Ajusta los filtros o crea un nuevo tenant.",
+  "Nenhuma empresa encontrada": { es: "No se encontró ningún empresa" },
+  "Ajuste os filtros ou cadastre uma nova empresa.": {
+    es: "Ajusta los filtros o crea un nuevo empresa.",
   },
   Ver: { es: "Ver" },
-  "Tenant criado com sucesso!": { es: "¡Tenant creado con éxito!" },
-  "Este slug já está em uso": { es: "Este slug ya está en uso" },
-  "Erro ao criar tenant:": { es: "Error al crear el tenant:" },
-  "Erro inesperado ao criar tenant": { es: "Error inesperado al crear el tenant" },
+  "Empresa cadastrada com sucesso!": { es: "¡Empresa creado con éxito!" },
+  "Este identificador já está em uso": { es: "Este slug ya está en uso" },
+  "Erro ao cadastrar a empresa:": { es: "Error al crear la empresa:" },
+  "Erro inesperado ao cadastrar a empresa": { es: "Error inesperado al crear la empresa" },
   "Novo Tenant": { es: "Nuevo tenant" },
   "Cria um novo tenant com status": { es: "Crea un nuevo tenant con estado" },
   "Dados do tenant": { es: "Datos del tenant" },
@@ -5479,8 +5481,8 @@ export const DICIONARIO: Traducoes = {
   "Visão Geral": { es: "Vista general" },
   Saúde: { es: "Salud" },
   "em breve": { es: "próximamente" },
-  "Não foi possível carregar os dados do tenant. Tente recarregar a página.": {
-    es: "No se pudieron cargar los datos del tenant. Intenta recargar la página.",
+  "Não foi possível carregar os dados da empresa. Tente recarregar a página.": {
+    es: "No se pudieron cargar los datos dla empresa. Intenta recargar la página.",
   },
   Conectando: { es: "Conectando" },
   Conectado: { es: "Conectado" },
@@ -5504,9 +5506,9 @@ export const DICIONARIO: Traducoes = {
   "Solicitações LGPD pendentes": { es: "Solicitudes LGPD pendientes" },
   "Pendências LGPD": { es: "Pendientes LGPD" },
   "Invocações IA (30d)": { es: "Invocaciones IA (30d)" },
-  "Tenant redigido — ação não disponível": { es: "Tenant anonimizado — acción no disponible" },
-  "Suspender tenant": { es: "Suspender tenant" },
-  "Reativar tenant": { es: "Reactivar tenant" },
+  "Empresa anonimizada — ação não disponível": { es: "Empresa anonimizado — acción no disponible" },
+  "Suspender empresa": { es: "Suspender empresa" },
+  "Reativar empresa": { es: "Reactivar empresa" },
   // ─── #2778 — os três botões de ícone de TODA linha da listagem de tenants ───
   // `aria-label` E `title`, os dois saem daqui: o botão é só ícone, então o
   // rótulo é a ÚNICA coisa que o leitor de tela anuncia. Vão com `{nome}` porque
@@ -5516,37 +5518,36 @@ export const DICIONARIO: Traducoes = {
   "Editar os dados de {nome}": { es: "Editar los datos de {nome}" },
   "Suspender {nome}": { es: "Suspender a {nome}" },
   // ─── Admin de plataforma: gestão de tenants (editar, excluir, e-mail de acesso) ───
-  "Tenant excluído.": { es: "Tenant eliminado." },
+  "Empresa excluída.": { es: "Empresa eliminado." },
   "Logins removidos": { es: "Accesos eliminados" },
   "Logins mantidos (pertencem a outra empresa ou são referenciados)": { es: "Accesos conservados (pertenecen a otra empresa o están referenciados)" },
   "Arquivos removidos": { es: "Archivos eliminados" },
   "Integrações externas que não responderam": { es: "Integraciones externas que no respondieron" },
   "A exclusão não foi concluída": { es: "La eliminación no se completó" },
-  "Excluir tenant definitivamente": { es: "Eliminar tenant definitivamente" },
-  "Esta ação é irreversível. Não há como recuperar o tenant depois.": { es: "Esta acción es irreversible. No hay forma de recuperar el tenant después." },
+  "Excluir empresa definitivamente": { es: "Eliminar empresa definitivamente" },
+  "Esta ação é irreversível. Não há como recuperar a empresa depois.": { es: "Esta acción es irreversible. No hay forma de recuperar la empresa después." },
   "Serão apagados": { es: "Se eliminarán" },
   "vínculos de usuário": { es: "vínculos de usuario" },
   "leads": { es: "leads" },
   "e todos os demais dados de": { es: "y todos los demás datos de" },
   "— arquivos, agentes, integrações e configurações. As sessões de WhatsApp são desconectadas.": { es: "— archivos, agentes, integraciones y configuraciones. Las sesiones de WhatsApp se desconectan." },
-  "Ficam guardados: o registro de auditoria da exclusão e o resumo dos pedidos LGPD atendidos. Logins que só pertenciam a este tenant são removidos; quem participa de outra empresa continua.": { es: "Se conservan: el registro de auditoría de la eliminación y el resumen de las solicitudes de protección de datos atendidas. Los accesos que solo pertenecían a este tenant se eliminan; quien participa en otra empresa continúa." },
+  "Ficam guardados: o registro de auditoria da exclusão e o resumo dos pedidos LGPD atendidos. Logins que só pertenciam a esta empresa são removidos; quem participa de outra empresa continua.": { es: "Se conservan: el registro de auditoría de la eliminación y el resumen de las solicitudes de protección de datos atendidas. Los accesos que solo pertenecían a esta empresa se eliminan; quien participa en otra empresa continúa." },
   "Motivo da exclusão": { es: "Motivo de la eliminación" },
   "Ex.: contrato encerrado a pedido do cliente (mínimo 10 caracteres)": { es: "Ej.: contrato terminado a pedido del cliente (mínimo 10 caracteres)" },
-  "Para confirmar, digite o identificador do tenant": { es: "Para confirmar, escribe el identificador del tenant" },
+  "Para confirmar, digite o identificador da empresa": { es: "Para confirmar, escribe el identificador dla empresa" },
   "Excluir definitivamente": { es: "Eliminar definitivamente" },
-  "Editar dados do tenant": { es: "Editar datos del tenant" },
+  "Editar dados da empresa": { es: "Editar datos dla empresa" },
   "Os mesmos dados que o administrador da empresa vê em Configurações › Empresa.": { es: "Los mismos datos que el administrador de la empresa ve en Configuración › Empresa." },
   "Editar dados": { es: "Editar datos" },
-  "Excluir tenant": { es: "Eliminar tenant" },
-  "Para excluir um tenant, suspenda-o primeiro.": { es: "Para eliminar un tenant, suspéndelo primero." },
+  "Para excluir uma empresa, suspenda-a primeiro.": { es: "Para eliminar una empresa, suspéndelo primero." },
   "Membros e e-mails de acesso": { es: "Miembros y correos de acceso" },
   "Não foi possível carregar os membros.": { es: "No fue posible cargar los miembros." },
-  "Nenhum membro neste tenant.": { es: "Ningún miembro en este tenant." },
+  "Nenhum membro nesta empresa.": { es: "Ningún miembro en esta empresa." },
   "(sem e-mail)": { es: "(sin correo)" },
   "Dono": { es: "Dueño" },
   "Admin da plataforma": { es: "Admin de la plataforma" },
   "O e-mail de um administrador da plataforma só é trocado pelo próprio dono da conta.": { es: "El correo de un administrador de la plataforma solo lo cambia el propio dueño de la cuenta." },
-  "Quem perdeu o acesso a este tenant não tem o e-mail trocado por aqui: a empresa avisada seria uma em que a pessoa já não está.": { es: "A quien perdió el acceso a este tenant no se le cambia el correo por aquí: la empresa avisada sería una en la que la persona ya no está." },
+  "Quem perdeu o acesso a esta empresa não tem o e-mail trocado por aqui: a empresa avisada seria uma em que a pessoa já não está.": { es: "A quien perdió el acceso a esta empresa no se le cambia el correo por aquí: la empresa avisada sería una en la que la persona ya no está." },
   "Alterar e-mail": { es: "Cambiar correo" },
   "E-mail alterado.": { es: "Correo cambiado." },
   "A pessoa já entra com o novo endereço, e a recuperação de senha vai para ele. A empresa foi avisada na Central.": { es: "La persona ya entra con la nueva dirección, y la recuperación de contraseña va a ella. La empresa fue avisada en la Central." },
@@ -5557,8 +5558,8 @@ export const DICIONARIO: Traducoes = {
   "Novo e-mail": { es: "Nuevo correo" },
   "Este já é o e-mail desta pessoa.": { es: "Este ya es el correo de esta persona." },
   "Salvar e-mail": { es: "Guardar correo" },
-  "Tenant redigido — ações de gestão não disponíveis.": {
-    es: "Tenant anonimizado — acciones de gestión no disponibles.",
+  "Empresa anonimizada — ações de gestão não disponíveis.": {
+    es: "Empresa anonimizado — acciones de gestión no disponibles.",
   },
   hoje: { es: "hoy" },
   ontem: { es: "ayer" },
@@ -5568,8 +5569,7 @@ export const DICIONARIO: Traducoes = {
   meses: { es: "meses" },
   ano: { es: "año" },
   anos: { es: "años" },
-  "Tenant Suspenso": { es: "Tenant suspendido" },
-  "Tenant suspenso": { es: "Tenant suspendido" },
+  "Empresa suspensa": { es: "Empresa suspendido" },
   "Sem razão registrada.": { es: "Sin motivo registrado." },
   "Mínimo 10 caracteres": { es: "Mínimo 10 caracteres" },
   "Máximo 500 caracteres": { es: "Máximo 500 caracteres" },
@@ -5583,8 +5583,8 @@ export const DICIONARIO: Traducoes = {
   },
   "Suspendendo...": { es: "Suspendiendo..." },
   "Confirmar suspensão": { es: "Confirmar suspensión" },
-  "A reativação restabelece o acesso dos usuários deste tenant à plataforma. Informe o motivo da reativação para o registro de auditoria.": {
-    es: "La reactivación restablece el acceso de los usuarios de este tenant a la plataforma. Indica el motivo de la reactivación para el registro de auditoría.",
+  "A reativação restabelece o acesso dos usuários desta empresa à plataforma. Informe o motivo da reativação para o registro de auditoria.": {
+    es: "La reactivación restablece el acceso de los usuarios de esta empresa a la plataforma. Indica el motivo de la reactivación para el registro de auditoría.",
   },
   "Motivo da reativação": { es: "Motivo de la reactivación" },
   "Descreva o motivo da reativação (mínimo 10 caracteres)...": {
@@ -5594,8 +5594,8 @@ export const DICIONARIO: Traducoes = {
   "Confirmar reativação": { es: "Confirmar reactivación" },
 
   // ─── Admin de plataforma: Tenant health ───
-  "Não foi possível carregar o status de saúde do tenant. Tente recarregar a página.": {
-    es: "No se pudo cargar el estado de salud del tenant. Intenta recargar la página.",
+  "Não foi possível carregar o status de saúde da empresa. Tente recarregar a página.": {
+    es: "No se pudo cargar el estado de salud dla empresa. Intenta recargar la página.",
   },
   "Status de Saúde": { es: "Estado de salud" },
   "Atualizado às": { es: "Actualizado a las" },
@@ -5621,9 +5621,9 @@ export const DICIONARIO: Traducoes = {
   // ─── Admin de plataforma: Users (lista + detalhe) ───
   "Buscar por email ou nome...": { es: "Buscar por email o nombre..." },
   "Buscar usuários": { es: "Buscar usuarios" },
-  "Filtrar por tenant": { es: "Filtrar por tenant" },
-  "Todos os tenants": { es: "Todos los tenants" },
-  "Filtrar por role": { es: "Filtrar por rol" },
+  "Filtrar por empresa": { es: "Filtrar por empresa" },
+  "Todas as empresas": { es: "Todos los empresas" },
+  "Filtrar por papel": { es: "Filtrar por rol" },
   "Todos os roles": { es: "Todos los roles" },
   "Nenhum usuário encontrado": { es: "No se encontró ningún usuario" },
   "Ajuste os filtros para refinar a busca.": {
@@ -5638,7 +5638,7 @@ export const DICIONARIO: Traducoes = {
   Inativo: { es: "Inactivo" },
   "Sem memberships registrados.": { es: "Sin memberships registrados." },
   "Aceito em": { es: "Aceptado el" },
-  "Audit recente": { es: "Auditoría reciente" },
+  "Auditoria recente": { es: "Auditoría reciente" },
   "Nenhuma entrada de auditoria encontrada para este usuário.": {
     es: "No se encontró ninguna entrada de auditoría para este usuario.",
   },
@@ -5646,7 +5646,6 @@ export const DICIONARIO: Traducoes = {
   "usuários": { es: "usuarios" },
 
   // ─── Admin de plataforma: LGPD (lista + detalhe) ───
-  "LGPD — Cross-tenant": { es: "LGPD — Cross-tenant" },
   Recebido: { es: "Recibido" },
   Processando: { es: "Procesando" },
   "Revisão": { es: "Revisión" },
@@ -5671,10 +5670,10 @@ export const DICIONARIO: Traducoes = {
     es: "No hay entradas de auditoría registradas para esta solicitud.",
   },
   "Falha ao carregar solicitação.": { es: "No se pudo cargar la solicitud." },
-  "LGPD Cross-tenant": { es: "LGPD Cross-tenant" },
+  "LGPD — todas as empresas": { es: "LGPD todas las empresas" },
   Urgente: { es: "Urgente" },
-  "Somente leitura — aprovação é feita pelo operador no contexto do tenant.": {
-    es: "Solo lectura — la aprobación la hace el operador en el contexto del tenant.",
+  "Somente leitura — a aprovação é feita pelo operador dentro da empresa.": {
+    es: "Solo lectura — la aprobación la hace el operador en el contexto dla empresa.",
   },
   Origem: { es: "Origen" },
   Escopo: { es: "Alcance" },
@@ -5705,7 +5704,7 @@ export const DICIONARIO: Traducoes = {
   "Resolução": { es: "Resolución" },
   "Resolvido em": { es: "Resuelto el" },
   "Resolver incidente": { es: "Resolver incidente" },
-  "Descreva como o incidente foi resolvido. Esta ação é registrada no audit log e não pode ser desfeita.": {
+  "Descreva como o incidente foi resolvido. Esta ação é registrada na auditoria e não pode ser desfeita.": {
     es: "Describe cómo se resolvió el incidente. Esta acción queda registrada en el registro de auditoría y no se puede deshacer.",
   },
   "Nota de resolução": { es: "Nota de resolución" },
@@ -5721,29 +5720,29 @@ export const DICIONARIO: Traducoes = {
   evento: { es: "evento" },
   eventos: { es: "eventos" },
   "Limpar seleção": { es: "Limpiar selección" },
-  "Filtrar por actor user ID": { es: "Filtrar por actor user ID" },
+  "Filtrar por ID do usuário": { es: "Filtrar por actor user ID" },
   "Data de início": { es: "Fecha de inicio" },
   "Data de fim": { es: "Fecha de fin" },
   "Limpar": { es: "Limpiar" },
   "Recurso": { es: "Recurso" },
   "Nenhum evento encontrado": { es: "No se encontraron eventos" },
-  "Ajuste os filtros para ver entradas do audit log.": {
+  "Ajuste os filtros para ver registros da auditoria.": {
     es: "Ajusta los filtros para ver entradas del registro de auditoría.",
   },
-  "Entrada de audit não encontrada.": { es: "No se encontró la entrada de audit." },
+  "Registro de auditoria não encontrado.": { es: "No se encontró la entrada de audit." },
   "Sem actor registrado": { es: "Sin actor registrado" },
-  "Ver tenant": { es: "Ver tenant" },
+  "Ver empresa": { es: "Ver empresa" },
   "Abrir recurso": { es: "Abrir recurso" },
 
   // ─── Admin de plataforma: Platform Admins ───
   "Administradores com acesso privilegiado à plataforma": {
     es: "Administradores con acceso privilegiado a la plataforma",
   },
-  "Erro ao carregar platform admins. Tente recarregar.": {
-    es: "Error al cargar los platform admins. Intenta recargar.",
+  "Erro ao carregar os administradores. Tente recarregar.": {
+    es: "Error al cargar los administradores. Intenta recargar.",
   },
-  "Gerenciamento de Platform Admins é restrito ao DBA": {
-    es: "Solo el DBA puede gestionar Platform Admins",
+  "O cadastro de administradores da plataforma é feito direto no banco de dados": {
+    es: "Solo el DBA puede gestionar Administradores",
   },
   "Conforme Spec 01 §3.4 T-04: adição, remoção ou alteração de": {
     es: "Según la Spec 01 §3.4 T-04: la adición, eliminación o modificación de",
@@ -5758,15 +5757,15 @@ export const DICIONARIO: Traducoes = {
   "Usuário": { es: "Usuario" },
   "Concedido em": { es: "Concedido el" },
   "Concedido por": { es: "Concedido por" },
-  "Nenhum platform admin encontrado": { es: "No se encontraron platform admins" },
-  "Platform admins são configurados exclusivamente via DBA.": {
-    es: "Los platform admins solo los configura el DBA.",
+  "Nenhum administrador encontrado": { es: "No se encontraron administradores" },
+  "Administradores da plataforma são cadastrados direto no banco de dados.": {
+    es: "Los administradores solo los configura el DBA.",
   },
 
   // ─── Admin de plataforma: Usage & Custo ───
   "Uso & Custo": { es: "Uso y Costo" },
-  "Consumo de mensagens, conversas e AI por tenant": {
-    es: "Consumo de mensajes, conversaciones e IA por tenant",
+  "Consumo de mensagens, conversas e IA por empresa": {
+    es: "Consumo de mensajes, conversaciones e IA por empresa",
   },
   "Período": { es: "Período" },
   "Últimos 7 dias": { es: "Últimos 7 días" },
@@ -5777,11 +5776,11 @@ export const DICIONARIO: Traducoes = {
   },
   "Mensagens / dia": { es: "Mensajes / día" },
   "Custo AI / dia (R$)": { es: "Costo IA / día (R$)" },
-  "AI Tokens / dia": { es: "Tokens de IA / día" },
+  "Tokens de IA / dia": { es: "Tokens de IA / día" },
   "Não há dados de uso no período selecionado.": {
     es: "No hay datos de uso en el período seleccionado.",
   },
-  "Uso por tenant": { es: "Uso por tenant" },
+  "Consumo por empresa": { es: "Uso por empresa" },
   "Exportar CSV": { es: "Exportar CSV" },
   "Exportar": { es: "Exportar" },
   "Exportar vCard": { es: "Exportar vCard" },
@@ -8094,8 +8093,8 @@ export const DICIONARIO: Traducoes = {
   "Falha ao carregar conversa.": { es: "No se pudo cargar la conversación." },
   "Sem mensagens nesta conversa.": { es: "No hay mensajes en esta conversación." },
   "Modo somente-leitura.": { es: "Modo de solo lectura." },
-  "Use “Impersonate” (em breve, S-11.07) para responder.": {
-    es: "Usa “Impersonate” (próximamente, S-11.07) para responder.",
+  "Use “Acompanhar organização” para responder.": {
+    es: "Usa “Seguimiento” (próximamente, S-11.07) para responder.",
   },
   "Contato anonimizado": { es: "Contacto anonimizado" },
   "Sem contato vinculado.": { es: "Sin contacto vinculado." },
@@ -9761,6 +9760,7 @@ export const DICIONARIO: Traducoes = {
   "Anonimização cliente": { es: "Anonimización de cliente" },
   "Solicitação dados": { es: "Solicitud de datos" },
   "Anonimização tenant": { es: "Anonimización de tenant" },
+  "Anonimização da empresa": { es: "Anonimización de empresa" },
   "SLA: todos": { es: "SLA: todos" },
   "Alerta": { es: "Alerta" },
   "solicitação": { es: "solicitud" },
@@ -16647,7 +16647,7 @@ export const DICIONARIO: Traducoes = {
   "Em atraso": { es: "Atrasada" },
   "Os planos que você vende e as empresas que pagam. Empresa sem plano é isenta: não paga e não tem limites.": { es: "Los planes que vendes y las empresas que pagan. Una empresa sin plan está exenta: no paga y no tiene límites." },
   "Planos": { es: "Planes" },
-  "Nenhuma empresa paga ainda. Atribua um plano no painel da empresa, em Tenants.": { es: "Ninguna empresa paga todavía. Asigna un plan en el panel de la empresa, en Tenants." },
+  "Nenhuma empresa paga ainda. Atribua um plano no painel da empresa, em Empresas.": { es: "Ninguna empresa paga todavía. Asigna un plan en el panel de la empresa, en Empresas." },
   "Teste grátis até": { es: "Prueba gratis hasta" },
   "Prazo extra até": { es: "Plazo extra hasta" },
   "Editar plano": { es: "Editar plan" },
@@ -16664,7 +16664,7 @@ export const DICIONARIO: Traducoes = {
   "Plano salvo.": { es: "Plan guardado." },
   "Confira os campos do plano: preço a partir de R$ 5,00, teste grátis de 0 a 90 dias e limites a partir de 1.": { es: "Revisa los campos del plan: precio desde R$ 5,00, prueba gratis de 0 a 90 días y límites desde 1." },
   "O preço e o intervalo de um plano travam quando alguém o assina: para mudar, arquive e crie outro.": { es: "El precio y el intervalo de un plan se bloquean cuando alguien lo contrata: para cambiarlos, archívalo y crea otro." },
-  "Nenhum plano ainda. Crie o primeiro no formulário acima: nome, preço, dias de teste grátis e, se quiser, os limites. Depois atribua-o a cada empresa no painel dela, em Tenants.": { es: "Todavía no hay planes. Crea el primero en el formulario de arriba: nombre, precio, días de prueba gratis y, si quieres, los límites. Después asígnalo a cada empresa en su panel, en Tenants." },
+  "Nenhum plano ainda. Crie o primeiro no formulário acima: nome, preço, dias de teste grátis e, se quiser, os limites. Depois atribua-o a cada empresa no painel dela, em Empresas.": { es: "Todavía no hay planes. Crea el primero en el formulario de arriba: nombre, precio, días de prueba gratis y, si quieres, los límites. Después asígnalo a cada empresa en su panel, en Empresas." },
   "Plano do cadastro": { es: "Plan del registro" },
   "Números conectados": { es: "Números conectados" },
   "sem limite": { es: "sin límite" },

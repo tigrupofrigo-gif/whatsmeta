@@ -54,7 +54,7 @@ export function PlatformAdminsTableSkeleton() {
       <Table>
         <TableHeader>
           <TableRow>
-            {[t("Usuário"), t("Concedido em"), t("Concedido por"), "Scope", "MFA", t("Status"), t("Motivo")].map(
+            {[t("Usuário"), t("Concedido em"), t("Concedido por"), t("Escopo"), "MFA", t("Status"), t("Motivo")].map(
               (h) => (
                 <TableHead key={h}>{h}</TableHead>
               ),
@@ -86,10 +86,10 @@ function EmptyState() {
   return (
     <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16 text-center">
       <p className="text-sm font-medium text-muted-foreground">
-        {t("Nenhum platform admin encontrado")}
+        {t("Nenhum administrador encontrado")}
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        {t("Platform admins são configurados exclusivamente via DBA.")}
+        {t("Administradores da plataforma são cadastrados direto no banco de dados.")}
       </p>
     </div>
   );
@@ -140,7 +140,7 @@ export function PlatformAdminsTable({ data }: PlatformAdminsTableProps) {
             <TableHead className="min-w-[200px]">{t("Usuário")}</TableHead>
             <TableHead className="w-[140px]">{t("Concedido em")}</TableHead>
             <TableHead className="w-[160px]">{t("Concedido por")}</TableHead>
-            <TableHead className="w-[120px]">Scope</TableHead>
+            <TableHead className="w-[120px]">{t("Escopo")}</TableHead>
             <TableHead className="w-[60px]">MFA</TableHead>
             <TableHead className="w-[90px]">{t("Status")}</TableHead>
             <TableHead>{t("Motivo")}</TableHead>

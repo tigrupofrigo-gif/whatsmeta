@@ -54,7 +54,7 @@ test("org única oferece criação, responsável aceita e A→B→A não mistura
     await login(page, ownerEmail);
     await page.getByTestId("tenant-switcher").click();
     await page.getByRole("menuitem", { name: "Gerenciar organizações" }).click();
-    await page.getByRole("link", { name: /Novo tenant/i }).click();
+    await page.getByRole("link", { name: /Nova empresa/i }).click();
     await page.getByLabel("Nome de exibição").fill(`Empresa B ${suffix}`);
     await page.getByLabel("E-mail do responsável").fill(guestEmail);
     // O servidor confirma, mas todas as respostas da primeira tentativa se perdem.

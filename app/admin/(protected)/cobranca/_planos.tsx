@@ -200,7 +200,7 @@ export function PlanosDaInstalacao({ planos }: { planos: readonly PlanoDaTela[] 
         </p>
         {planos.length === 0 ? (
           <p className="text-sm text-muted-foreground">
-            {t("Nenhum plano ainda. Crie o primeiro no formulário acima: nome, preço, dias de teste grátis e, se quiser, os limites. Depois atribua-o a cada empresa no painel dela, em Tenants.")}
+            {t("Nenhum plano ainda. Crie o primeiro no formulário acima: nome, preço, dias de teste grátis e, se quiser, os limites. Depois atribua-o a cada empresa no painel dela, em Empresas.")}
           </p>
         ) : (
           <ul className="space-y-2">

@@ -34,7 +34,7 @@ export function UsageClient() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">{t("Uso & Custo")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {t("Consumo de mensagens, conversas e AI por tenant")}
+            {t("Consumo de mensagens, conversas e IA por empresa")}
           </p>
         </div>
 

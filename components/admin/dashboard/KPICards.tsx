@@ -54,7 +54,7 @@ export function KPICards({ kpis }: KPICardsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
       <KPICard
-        label={t("Tenants Ativos")}
+        label={t("Empresas ativas")}
         value={kpis.tenants_active}
         subtitle={t("organizações ativas")}
         Icon={Buildings}
@@ -98,7 +98,7 @@ export function KPICards({ kpis }: KPICardsProps) {
       <KPICard
         label={t("Budgets IA")}
         value={kpis.ai_budget_warnings}
-        subtitle={t("tenants com gasto acumulado ≥80% do teto")}
+        subtitle={t("empresas com gasto acumulado ≥80% do teto")}
         Icon={ChartBar}
         accent={kpis.ai_budget_warnings > 0}
       />

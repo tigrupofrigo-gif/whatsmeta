@@ -267,7 +267,7 @@ export function LgpdRequestAdminDetail({ id }: Props) {
         >
           <Link href="/admin/lgpd">
             <CaretLeft size={14} aria-hidden />
-            {t("LGPD Cross-tenant")}
+            {t("LGPD — todas as empresas")}
           </Link>
         </Button>
       </div>
@@ -294,7 +294,7 @@ export function LgpdRequestAdminDetail({ id }: Props) {
         </p>
 
         <p className="text-xs text-muted-foreground italic">
-          {t("Somente leitura — aprovação é feita pelo operador no contexto do tenant.")}
+          {t("Somente leitura — a aprovação é feita pelo operador dentro da empresa.")}
         </p>
       </div>
 
@@ -332,8 +332,8 @@ export function LgpdRequestAdminDetail({ id }: Props) {
             <Row label={t("Tentativas")} value={String(request.attempts)} />
             {tenant && (
               <>
-                <Row label="Tenant" value={tenant.display_name} />
-                <Row label="Slug" value={tenant.slug} />
+                <Row label={t("Empresa")} value={tenant.display_name} />
+                <Row label={t("Identificador")} value={tenant.slug} />
               </>
             )}
             {request.contact_id && (

@@ -3,7 +3,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 import { NewTenantForm, type PlanoParaEscolher } from "./_form";
 
-export const metadata = { title: "Novo Tenant — Admin Plataforma" };
+export const metadata = { title: "Nova empresa — Painel da plataforma" };
 export const dynamic = "force-dynamic";
 
 /**

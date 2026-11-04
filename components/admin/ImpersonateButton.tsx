@@ -57,7 +57,7 @@ export function ImpersonateButton({
       const json: unknown = await res.json().catch(() => ({}));
       if (!res.ok) {
         const rawMsg = (json as { error?: { message?: string } })?.error?.message;
-        const errorMsg = rawMsg ? t(rawMsg) : t("Não foi possível iniciar impersonate");
+        const errorMsg = rawMsg ? t(rawMsg) : t("Não foi possível iniciar o acompanhamento");
         transition.cancel();
         toast.error(errorMsg);
         return;
@@ -74,7 +74,7 @@ export function ImpersonateButton({
 
     } catch (err) {
       transition.cancel();
-      toast.error(t("Erro de rede ao iniciar impersonate"));
+      toast.error(t("Erro de rede ao iniciar o acompanhamento"));
       console.error("[impersonate] start error", err);
     } finally {
       setBusy(false);
@@ -90,7 +90,7 @@ export function ImpersonateButton({
           disabled={disabled}
           aria-label={
             disabled
-              ? (disabledReason ?? t("Impersonate indisponível"))
+              ? (disabledReason ?? t("Acompanhamento indisponível"))
               : `${t("Acompanhar")} ${displayName}`
           }
           title={disabled ? disabledReason : undefined}

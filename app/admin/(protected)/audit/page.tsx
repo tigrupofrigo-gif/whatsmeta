@@ -1,7 +1,7 @@
 import { AuditClient } from "./_client";
 
 export const metadata = {
-  title: "Audit Log — Admin",
+  title: "Auditoria — Painel da plataforma",
 };
 
 export default function AdminAuditPage() {

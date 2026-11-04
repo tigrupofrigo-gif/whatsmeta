@@ -6,7 +6,7 @@ import { IdiomaProvider } from "@/lib/i18n/IdiomaProvider";
 import { normalizarIdioma } from "@/lib/i18n/idiomas";
 import { traduzir } from "@/lib/i18n/dicionario";
 
-export const metadata = { title: "Acesso negado — Admin Plataforma" };
+export const metadata = { title: "Acesso negado — Painel da plataforma" };
 
 export default async function AdminForbiddenPage() {
   // Página sem `requirePlatformAdmin()` (é o próprio destino do redirect dele)

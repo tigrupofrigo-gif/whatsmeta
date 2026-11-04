@@ -37,7 +37,7 @@ export function PlatformModeBanner() {
         <div className="flex items-center gap-2 text-sm">
           <Buildings size={18} weight="fill" aria-hidden />
           <span className="font-semibold tracking-tight">{t("MODO PLATAFORMA")}</span>
-          <span className="hidden opacity-80 sm:inline">{t("— operação cross-tenant")}</span>
+          <span className="hidden opacity-80 sm:inline">{t("— visão de todas as empresas")}</span>
         </div>
         <div className="flex items-center gap-1">
           {/* 40px de tarja não comportam os 44px de alvo de toque do `size="icon"`.

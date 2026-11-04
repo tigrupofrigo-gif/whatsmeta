@@ -211,25 +211,25 @@ export function AuditFiltersAdmin({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <MultiSelectPopover
-        label="Tenants"
+        label={t("Empresas")}
         options={tenantOptions}
         selected={selectedTenants}
         onToggle={toggleTenant}
         onClear={() => onChange({ ...filters, tenant_ids: undefined })}
       />
       <MultiSelectPopover
-        label="Actions"
+        label={t("Ações")}
         options={actionOptions}
         selected={selectedActions}
         onToggle={toggleAction}
         onClear={() => onChange({ ...filters, actions: undefined })}
       />
       <Input
-        placeholder="Actor (user ID)"
+        placeholder={t("ID do usuário que agiu")}
         value={actorInput}
         onChange={(e) => handleActorChange(e.target.value)}
         className="h-9 w-60 text-sm"
-        aria-label={t("Filtrar por actor user ID")}
+        aria-label={t("Filtrar por ID do usuário")}
       />
       <div className="flex items-center gap-1">
         <label className="text-xs text-muted-foreground sr-only" htmlFor="audit-from">

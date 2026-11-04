@@ -56,7 +56,7 @@ export function TenantActions({ organization, counts }: TenantActionsProps) {
           displayName={displayName}
           disabled={isRedacted}
           disabledReason={
-            isRedacted ? t("Tenant redigido — ação não disponível") : undefined
+            isRedacted ? t("Empresa anonimizada — ação não disponível") : undefined
           }
         />
 
@@ -72,9 +72,9 @@ export function TenantActions({ organization, counts }: TenantActionsProps) {
             className="w-full"
             variant="destructive"
             onClick={() => setSuspendOpen(true)}
-            aria-label={t("Suspender tenant")}
+            aria-label={t("Suspender empresa")}
           >
-            {t("Suspender tenant")}
+            {t("Suspender empresa")}
           </Button>
         )}
 
@@ -98,9 +98,9 @@ export function TenantActions({ organization, counts }: TenantActionsProps) {
             className="w-full"
             variant="outline"
             onClick={() => setReactivateOpen(true)}
-            aria-label={t("Reativar tenant")}
+            aria-label={t("Reativar empresa")}
           >
-            {t("Reativar tenant")}
+            {t("Reativar empresa")}
           </Button>
         )}
 
@@ -110,14 +110,14 @@ export function TenantActions({ organization, counts }: TenantActionsProps) {
             className="w-full"
             variant="destructive"
             onClick={() => setDeleteOpen(true)}
-            aria-label={t("Excluir tenant")}
+            aria-label={t("Excluir empresa")}
           >
-            {t("Excluir tenant")}
+            {t("Excluir empresa")}
           </Button>
         )}
         {canSuspend && (
           <p className="text-xs text-muted-foreground">
-            {t("Para excluir um tenant, suspenda-o primeiro.")}
+            {t("Para excluir uma empresa, suspenda-a primeiro.")}
           </p>
         )}
         {suspensaPorCobranca && (
@@ -128,7 +128,7 @@ export function TenantActions({ organization, counts }: TenantActionsProps) {
 
         {isRedacted && (
           <p className="text-xs text-muted-foreground text-center py-2">
-            {t("Tenant redigido — ações de gestão não disponíveis.")}
+            {t("Empresa anonimizada — ações de gestão não disponíveis.")}
           </p>
         )}
       </div>

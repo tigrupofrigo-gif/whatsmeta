@@ -118,8 +118,8 @@ test("corrigir o e-mail, ver o aviso na Central, editar, recusar a exclusão por
   await expect(admin.getByRole("heading", { level: 1, name: NOME })).toBeVisible();
   await expect(admin.getByTestId("membro-email")).toHaveText(EMAIL_ERRADO);
   // Excluir não existe para tenant ativo — só a instrução.
-  await expect(admin.getByRole("button", { name: "Excluir tenant" })).toHaveCount(0);
-  await expect(admin.getByText("Para excluir um tenant, suspenda-o primeiro.")).toBeVisible();
+  await expect(admin.getByRole("button", { name: "Excluir empresa" })).toHaveCount(0);
+  await expect(admin.getByText("Para excluir uma empresa, suspenda-a primeiro.")).toBeVisible();
   await foto(admin, "01-ativo");
 
   // ── 1. Corrigir o e-mail de acesso ──────────────────────────────────────
@@ -173,11 +173,11 @@ test("corrigir o e-mail, ver o aviso na Central, editar, recusar a exclusão por
     .eq("id", orgId);
   if (porCobranca.error) throw porCobranca.error;
   await admin.reload();
-  // A main esconde "Reativar tenant" na suspensão por cobrança (a saída é o card
+  // A main esconde "Reativar empresa" na suspensão por cobrança (a saída é o card
   // Cobrança); o sinal de que a tela recarregou é o tipo da suspensão.
   await expect(admin.getByTestId("tipo-da-suspensao")).toHaveText("Suspensa por falta de pagamento", { timeout: 15_000 });
-  await expect(admin.getByRole("button", { name: "Reativar tenant" })).toHaveCount(0);
-  await expect(admin.getByRole("button", { name: "Excluir tenant" })).toHaveCount(0);
+  await expect(admin.getByRole("button", { name: "Reativar empresa" })).toHaveCount(0);
+  await expect(admin.getByRole("button", { name: "Excluir empresa" })).toHaveCount(0);
   await expect(
     admin.getByText("Suspensa por falta de pagamento: não pode ser excluída enquanto houver cobrança pendente."),
   ).toBeVisible();
@@ -196,11 +196,11 @@ test("corrigir o e-mail, ver o aviso na Central, editar, recusar a exclusão por
     .eq("id", orgId);
   if (devolta.error) throw devolta.error;
   await admin.reload();
-  await admin.getByRole("button", { name: "Suspender tenant" }).click();
+  await admin.getByRole("button", { name: "Suspender empresa" }).click();
   await admin.locator("#suspend-reason").fill("Encerramento do contrato — teste e2e");
   await admin.getByRole("button", { name: "Confirmar suspensão" }).click();
   await expect(admin.getByRole("dialog")).toHaveCount(0);
-  await admin.getByRole("button", { name: "Excluir tenant" }).click();
+  await admin.getByRole("button", { name: "Excluir empresa" }).click();
   const excluir = admin.getByRole("button", { name: "Excluir definitivamente" });
   await expect(admin.getByText("Esta ação é irreversível.", { exact: false })).toBeVisible();
   await admin.locator("#delete-reason").fill("Contrato encerrado a pedido do cliente");

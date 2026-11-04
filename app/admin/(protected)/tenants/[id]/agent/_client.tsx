@@ -36,7 +36,7 @@ export function TenantAgentClient({ id }: TenantAgentClientProps) {
   if (isError || !data?.data) {
     return (
       <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-6 py-10 text-center text-sm text-destructive">
-        {t("Não foi possível carregar o agente do tenant. Tente recarregar a página.")}
+        {t("Não foi possível carregar o agente da empresa. Tente recarregar a página.")}
       </div>
     );
   }

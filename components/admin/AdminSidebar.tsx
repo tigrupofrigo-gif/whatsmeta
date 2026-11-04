@@ -41,15 +41,15 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/admin/dashboard", label: "Dashboard", icon: Gauge },
+  { href: "/admin/dashboard", label: "Painel", icon: Gauge },
   { href: "/admin/inbox", label: "Inbox", icon: ChatsCircle },
-  { href: "/admin/tenants", label: "Tenants", icon: Buildings },
-  { href: "/admin/audit", label: "Audit", icon: ClipboardText },
+  { href: "/admin/tenants", label: "Empresas", icon: Buildings },
+  { href: "/admin/audit", label: "Auditoria", icon: ClipboardText },
   { href: "/admin/lgpd", label: "LGPD", icon: Scales },
-  { href: "/admin/incidents", label: "Incidents", icon: Warning },
-  { href: "/admin/usage", label: "Usage", icon: ChartBar },
-  { href: "/admin/users", label: "Users", icon: Users },
-  { href: "/admin/platform-admins", label: "Platform Admins", icon: ShieldCheck },
+  { href: "/admin/incidents", label: "Incidentes", icon: Warning },
+  { href: "/admin/usage", label: "Consumo", icon: ChartBar },
+  { href: "/admin/users", label: "Usuários", icon: Users },
+  { href: "/admin/platform-admins", label: "Administradores", icon: ShieldCheck },
   // A porta da tela de marca. Ela NÃO entra em `lib/navigation/registry.ts`:
   // aquele registro descreve a navegação do tenant (`app/app/**`) e o teste de
   // completude que o vigia varre só aquela raiz. O admin de plataforma tem
@@ -154,7 +154,7 @@ export function AdminSidebar({ userEmail, variant = "desktop", modulosLigados = 
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
             {marca.name}
           </span>
-          <span className="text-sm font-semibold tracking-tight">{t("Admin Plataforma")}</span>
+          <span className="text-sm font-semibold tracking-tight">{t("Painel da plataforma")}</span>
         </div>
       </div>
       <nav className="flex-1 space-y-1 overflow-y-auto p-2" aria-label={t("Navegação plataforma")}>

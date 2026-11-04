@@ -92,11 +92,11 @@ export function UsersClient() {
           value={filters.tenant_id ?? "all"}
           onValueChange={handleTenant}
         >
-          <SelectTrigger className="sm:w-52" aria-label={t("Filtrar por tenant")}>
-            <SelectValue placeholder="Tenant" />
+          <SelectTrigger className="sm:w-52" aria-label={t("Filtrar por empresa")}>
+            <SelectValue placeholder={t("Empresa")} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">{t("Todos os tenants")}</SelectItem>
+            <SelectItem value="all">{t("Todas as empresas")}</SelectItem>
             {tenants.map((tenant) => (
               <SelectItem key={tenant.id} value={tenant.id}>
                 {tenant.display_name}
@@ -106,8 +106,8 @@ export function UsersClient() {
         </Select>
 
         <Select value={filters.role ?? "all"} onValueChange={handleRole}>
-          <SelectTrigger className="sm:w-40" aria-label={t("Filtrar por role")}>
-            <SelectValue placeholder="Role" />
+          <SelectTrigger className="sm:w-40" aria-label={t("Filtrar por papel")}>
+            <SelectValue placeholder={t("Papel")} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">{t("Todos os roles")}</SelectItem>

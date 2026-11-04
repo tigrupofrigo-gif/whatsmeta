@@ -113,7 +113,7 @@ export function AdminShell({
               >
                 <List size={20} aria-hidden />
               </Button>
-              <span className="text-sm font-semibold tracking-tight">{t("Admin Plataforma")}</span>
+              <span className="text-sm font-semibold tracking-tight">{t("Painel da plataforma")}</span>
             </header>
             {/* `overflow-x-hidden` como rede de segurança — mesmo motivo do
                 `AppShell` (ver comentário lá): se algo estourar a largura, a

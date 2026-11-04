@@ -20,7 +20,7 @@ import { PlanosDaInstalacao, type PlanoDaTela } from "./_planos";
 import { ReguaDaCobranca } from "./_regua";
 import { FaixaDoModoDeTeste, VisaoGeral } from "./_visao-geral";
 
-export const metadata = { title: "Cobrança — Admin Plataforma" };
+export const metadata = { title: "Cobrança — Painel da plataforma" };
 export const dynamic = "force-dynamic";
 
 interface ClienteDaTela {
@@ -80,7 +80,7 @@ export default async function CobrancaPage({ searchParams }: { searchParams: Pro
 
   const clientesDaTela =
     pagantes.length === 0 ? (
-      <p className="text-sm text-muted-foreground">{t("Nenhuma empresa paga ainda. Atribua um plano no painel da empresa, em Tenants.")}</p>
+      <p className="text-sm text-muted-foreground">{t("Nenhuma empresa paga ainda. Atribua um plano no painel da empresa, em Empresas.")}</p>
     ) : (
       <div className="overflow-x-auto">
         <table className="w-full text-sm">

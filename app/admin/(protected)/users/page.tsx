@@ -1,6 +1,6 @@
 import { UsersClient } from "./_client";
 
-export const metadata = { title: "Usuários — Admin Plataforma" };
+export const metadata = { title: "Usuários — Painel da plataforma" };
 
 export default function AdminUsersPage() {
   return <UsersClient />;

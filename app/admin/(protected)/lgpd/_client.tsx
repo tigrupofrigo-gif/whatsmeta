@@ -73,7 +73,7 @@ export function LgpdAdminClient() {
 
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">{t("LGPD — Cross-tenant")}</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("LGPD — todas as empresas")}</h1>
         <p className="text-sm text-muted-foreground mt-1">
           {isLoading
             ? t("Carregando...")
@@ -105,7 +105,7 @@ export function LgpdAdminClient() {
             <SelectItem value={NONE}>{t("Todos os tipos")}</SelectItem>
             <SelectItem value="redact">{t("Anonimização cliente")}</SelectItem>
             <SelectItem value="data_request">{t("Solicitação de dados")}</SelectItem>
-            <SelectItem value="store_redact">{t("Anonimização tenant")}</SelectItem>
+            <SelectItem value="store_redact">{t("Anonimização da empresa")}</SelectItem>
           </SelectContent>
         </Select>
 

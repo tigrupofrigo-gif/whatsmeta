@@ -1,7 +1,7 @@
 import { LgpdAdminClient } from "./_client";
 
 export const metadata = {
-  title: "LGPD — Admin",
+  title: "LGPD — Painel da plataforma",
 };
 
 export default function AdminLgpdPage() {

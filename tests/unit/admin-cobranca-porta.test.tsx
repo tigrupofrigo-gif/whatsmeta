@@ -16,7 +16,7 @@ describe("menu do admin — Cobrança", () => {
   it("chave desligada: sem a entrada (controle: Tenants segue lá)", () => {
     render(<AdminSidebar userEmail="dono@x.test" modulosLigados={[]} />);
     expect(screen.queryByRole("link", { name: "Cobrança" })).toBeNull();
-    expect(screen.getByRole("link", { name: "Tenants" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Empresas" })).toBeTruthy();
   });
 
   it("chave ligada: a entrada leva a /admin/cobranca", () => {

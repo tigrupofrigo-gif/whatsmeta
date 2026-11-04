@@ -5,7 +5,7 @@ interface AuditDetailPageProps {
 }
 
 export const metadata = {
-  title: "Audit Entry — Admin",
+  title: "Registro de auditoria — Painel da plataforma",
 };
 
 export default async function AuditDetailPage({ params }: AuditDetailPageProps) {

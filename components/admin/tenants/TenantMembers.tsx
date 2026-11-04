@@ -54,7 +54,7 @@ export function TenantMembers({ organizationId, readOnly = false }: TenantMember
         <p className="text-sm text-destructive">{t("Não foi possível carregar os membros.")}</p>
       )}
       {!isLoading && !isError && membros.length === 0 && (
-        <p className="text-sm text-muted-foreground">{t("Nenhum membro neste tenant.")}</p>
+        <p className="text-sm text-muted-foreground">{t("Nenhum membro nesta empresa.")}</p>
       )}
 
       <ul className="divide-y">
@@ -84,7 +84,7 @@ export function TenantMembers({ organizationId, readOnly = false }: TenantMember
                       )
                     : m.revoked_at
                       ? t(
-                          "Quem perdeu o acesso a este tenant não tem o e-mail trocado por aqui: a empresa avisada seria uma em que a pessoa já não está.",
+                          "Quem perdeu o acesso a esta empresa não tem o e-mail trocado por aqui: a empresa avisada seria uma em que a pessoa já não está.",
                         )
                       : undefined
                 }

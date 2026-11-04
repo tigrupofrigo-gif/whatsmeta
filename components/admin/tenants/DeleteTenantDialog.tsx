@@ -69,7 +69,7 @@ export function DeleteTenantDialog({
             r.canais.filter((c) => c.desfecho === "falhou").length +
             (r.voz === "falhou" ? 1 : 0) +
             (r.nuvemshop === "falhou" ? 1 : 0);
-          toast.success(t("Tenant excluído."), {
+          toast.success(t("Empresa excluída."), {
             description: [
               `${t("Logins removidos")}: ${r.usuarios.removidos.length}`,
               `${t("Logins mantidos (pertencem a outra empresa ou são referenciados)")}: ${r.usuarios.mantidos.length}`,
@@ -100,11 +100,11 @@ export function DeleteTenantDialog({
     >
       <AlertDialogContent className="max-w-lg">
         <AlertDialogHeader>
-          <AlertDialogTitle>{t("Excluir tenant definitivamente")}</AlertDialogTitle>
+          <AlertDialogTitle>{t("Excluir empresa definitivamente")}</AlertDialogTitle>
           <AlertDialogDescription asChild>
             <div className="space-y-3 text-sm">
               <p className="font-medium text-destructive">
-                {t("Esta ação é irreversível. Não há como recuperar o tenant depois.")}
+                {t("Esta ação é irreversível. Não há como recuperar a empresa depois.")}
               </p>
               <p>
                 {t("Serão apagados")}: {counts.user_count} {t("vínculos de usuário")},{" "}
@@ -117,7 +117,7 @@ export function DeleteTenantDialog({
               </p>
               <p>
                 {t(
-                  "Ficam guardados: o registro de auditoria da exclusão e o resumo dos pedidos LGPD atendidos. Logins que só pertenciam a este tenant são removidos; quem participa de outra empresa continua.",
+                  "Ficam guardados: o registro de auditoria da exclusão e o resumo dos pedidos LGPD atendidos. Logins que só pertenciam a esta empresa são removidos; quem participa de outra empresa continua.",
                 )}
               </p>
             </div>
@@ -143,7 +143,7 @@ export function DeleteTenantDialog({
           </div>
           <div className="space-y-2">
             <Label htmlFor="delete-confirm">
-              {t("Para confirmar, digite o identificador do tenant")}:{" "}
+              {t("Para confirmar, digite o identificador da empresa")}:{" "}
               <code className="rounded-md bg-muted px-1 py-0.5 text-xs">{slug}</code>
             </Label>
             <Input
