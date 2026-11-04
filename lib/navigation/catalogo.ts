@@ -843,6 +843,18 @@ export const NAV_CATALOG = [
     modulo: "honorarios",
   },
   {
+    // WhatsMeta: o painel de atendimento — volume, tempo de resposta e fila,
+    // por responsável, número de WhatsApp e período. Régua na
+    // `fn_relatorio_atendimento` (migration 9901).
+    href: "/app/relatorios",
+    label: "Relatórios de atendimento",
+    description: "Volume, tempo de resposta e fila, por responsável, número de WhatsApp e período, com gráficos e exportação.",
+    icon: "ChartLineUp",
+    group: "analise",
+    section: "Os números do período",
+    sidebar: true,
+  },
+  {
     href: "/app/metrics",
     label: "Desempenho",
     description: "Funil e performance por atendente nos últimos 30 dias.",
@@ -1097,6 +1109,28 @@ export const NAV_CATALOG = [
     // "Configurações › Plano e cobrança" — o item precisa ter esse nome.
     label: "Plano e cobrança",
     description: "Pagamento, troca de plano e faturas da sua empresa.",
+    icon: "Receipt",
+    group: "organizacao",
+    section: "Sua empresa",
+    minRole: "admin",
+  },
+  {
+    // WhatsMeta: em Configurações, os dois jeitos de ligar um número (API
+    // oficial da Meta e QR Code). A conexão em si segue em Conexões.
+    href: "/app/settings/canais",
+    label: "Canais do WhatsApp",
+    description: "API oficial da Meta ou conexão não oficial por QR Code: escolha como cada número se conecta.",
+    icon: "PlugsConnected",
+    group: "organizacao",
+    section: "Sua empresa",
+    minRole: "admin",
+  },
+  {
+    // WhatsMeta: a empresa conecta a própria conta do Asaas para cobrar os
+    // clientes a partir dos negócios do funil (Pix, boleto, cartão).
+    href: "/app/settings/asaas",
+    label: "Asaas",
+    description: "Cobre seus clientes por Pix, boleto ou cartão direto dos negócios do funil.",
     icon: "Receipt",
     group: "organizacao",
     section: "Sua empresa",

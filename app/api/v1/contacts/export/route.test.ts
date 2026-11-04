@@ -27,7 +27,6 @@ const ORG_ID = "22222222-2222-4222-8222-222222222222";
 const USER_ID = "11111111-1111-4111-8111-111111111111";
 const URL_BASE = "http://localhost/api/v1/contacts/export";
 const TAMANHO_DA_PAGINA = 100;
-const TETO_DO_EXPORT = 10_000;
 
 function usuario(): AuthUser {
   return {
@@ -172,17 +171,17 @@ describe("o CSV de contatos", () => {
     expect((chamadas[0]![2] as { cursor?: string }).cursor).toBeUndefined();
   });
 
-  it("para no teto de 10.000 e avisa que o arquivo foi cortado", async () => {
+  it("⭐ sem teto: 15.000 contatos saem todos, em fluxo, sem aviso de corte", async () => {
     devolvePaginas(Array.from({ length: 15_000 }, (_, k) => contato(k + 1)));
 
     const res = await chamar();
     const csv = await res.text();
 
-    expect(dadosDoCsv(csv)).toHaveLength(TETO_DO_EXPORT);
-    expect(res.headers.get("X-Export-Truncado")).toBe("true");
-    expect(listContactsHandler).toHaveBeenCalledTimes(100);
+    expect(dadosDoCsv(csv)).toHaveLength(15_000);
+    expect(res.headers.get("X-Export-Truncado")).toBeNull();
+    expect(listContactsHandler).toHaveBeenCalledTimes(150);
     const auditChamado = vi.mocked(audit).mock.calls[0]![0];
-    expect(auditChamado.metadata).toMatchObject({ total: TETO_DO_EXPORT, truncado: true });
+    expect(auditChamado.metadata).toMatchObject({ total: 15_000, truncado: false });
   });
 
   it("os filtros da tela viajam inteiros para o mesmo handler da lista", async () => {

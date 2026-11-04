@@ -477,7 +477,7 @@ sincronizar_smtp_do_gotrue() {
   set_env_var "$env_sb" SMTP_USER "$(valor_compose "$usuario")"
   set_env_var "$env_sb" SMTP_PASS "$(valor_compose "$senha")"
   set_env_var "$env_sb" SMTP_ADMIN_EMAIL "$(valor_compose "$remetente")"
-  set_env_var "$env_sb" SMTP_SENDER_NAME "$(valor_compose "${nome:-${APP_NAME:-DeskcommCRM}}")"
+  set_env_var "$env_sb" SMTP_SENDER_NAME "$(valor_compose "${nome:-${APP_NAME:-WhatsMeta}}")"
 }
 
 # A Resend também fala SMTP (smtp.resend.com:465, usuário `resend`, senha = a
@@ -2450,7 +2450,7 @@ ler_rodada_do_banco() {
 # `publish-image.yml` digam o mesmo. Se você é um fork, é lá que está a lista do
 # que trocar junto — e, desde 18/09/2026, o CI do SEU fork não cobra este valor:
 # a asserção só vale quando o dono do runner é o dono deste repositório.
-IMG_NS="ghcr.io/melgarafael"
+IMG_NS="ghcr.io/tigrupofrigo-gif"
 IMG_APP="${IMG_NS}/deskcommcrm"
 IMG_WORKER="${IMG_NS}/deskcomm-worker"
 IMG_SCHEDULER="${IMG_NS}/deskcomm-scheduler"
@@ -2470,7 +2470,7 @@ IMG_VOICE_AGENT="${IMG_NS}/deskcomm-voice-agent"
 # alguém porque não deu para resolver um número de versão seria trocar um
 # problema de previsibilidade por um de disponibilidade.
 ultima_versao_publicada() {
-  local url="${1:-https://github.com/melgarafael/DeskcommCRM.git}" ref
+  local url="${1:-https://github.com/tigrupofrigo-gif/whatsmeta.git}" ref
   command -v git >/dev/null 2>&1 || return 0
   # `grep -v -- -` descarta PRERELEASE (v1.11.0-rc1, v1.1.1-jmpo.1 — esta última
   # existe de verdade neste repo). O `--sort=-v:refname` do git põe o prerelease
@@ -3194,6 +3194,19 @@ setup_update_agent_cron() {
   # primeira instalação passa pelos dois blocos na mesma rodada.
   ( { crontab -l 2>/dev/null || true; } | cron_merge "$marcador" "$legado" "$cron_line" ) | crontab -
   c_grn "$(t "✓ atualização pela tela ativa (agente a cada 5 minutos)")"
+}
+
+# Ativa (idempotente) o BACKUP AUTOMÁTICO (WhatsMeta): o cron chama o
+# backup-agendado.sh todo dia às 03:17, e ele só faz o backup quando o último
+# tem BACKUP_INTERVALO_DIAS (padrão 25) dias ou mais — ver o cabeçalho dele.
+# Chamada por install.sh e update.sh; re-rodar não duplica a linha.
+setup_backup_cron() {
+  command -v crontab >/dev/null 2>&1 || { c_ylw "$(t "⚠ 'crontab' não encontrado — o backup automático não foi agendado. Instale o pacote 'cron' e rode de novo.")"; return 0; }
+  local legado="cd ${PROJECT_DIR} && bash hostgator-setup-kit/backup-agendado.sh"
+  local marcador; marcador="$(cron_tag backup)"
+  local cron_line="17 3 * * * ${legado} >/dev/null 2>&1 ${marcador}"
+  ( { crontab -l 2>/dev/null || true; } | cron_merge "$marcador" "$legado" "$cron_line" ) | crontab -
+  c_grn "$(t "✓ backup automático ativo (banco, conversas e anexos)") — $(t "a cada") ${BACKUP_INTERVALO_DIAS:-25} $(t "dias")"
 }
 
 # Garante a chave de cifra dos segredos (webhooks/Nuvemshop) e a semeia no

@@ -126,7 +126,17 @@ function ehVisivel(idioma: IdiomaDoRegistro): idioma is IdiomaVisivel {
 }
 
 /** Os idiomas que aparecem, na ordem do registro — o padrão do produto primeiro. */
-export const IDIOMAS_VISIVEIS: readonly IdiomaVisivel[] = REGISTRO_DE_IDIOMAS.filter(ehVisivel);
+/**
+ * WhatsMeta: a interface é servida SÓ nestes idiomas. Os catálogos dos outros
+ * continuam no repositório (e nos tipos), mas não são oferecidos, aceitos nem
+ * servidos: quem tinha outro idioma salvo, ou um navegador em outra língua, vê
+ * português. Para reativar um idioma, acrescente o código aqui.
+ */
+export const IDIOMAS_DO_PRODUTO: readonly string[] = ["pt-BR"];
+
+export const IDIOMAS_VISIVEIS: readonly IdiomaVisivel[] = REGISTRO_DE_IDIOMAS.filter(ehVisivel).filter((idioma) =>
+  IDIOMAS_DO_PRODUTO.includes(idioma.codigo),
+);
 
 /** Os que ainda não aparecem: citados na mensagem dos gates, para quem contribui saber que não precisa deles. */
 export const IDIOMAS_EM_CONSTRUCAO: readonly IdiomaDoRegistro[] = REGISTRO_DE_IDIOMAS.filter(

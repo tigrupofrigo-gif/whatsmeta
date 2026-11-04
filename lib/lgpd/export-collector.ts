@@ -257,6 +257,24 @@ export interface SaleRow {
  * metade — o que se apaga a pedido do titular é o que se entrega a pedido
  * dele.
  */
+/**
+ * Cobrança do Asaas que a empresa fez ao titular (WhatsMeta 9900). O gatilho
+ * `fn_asaas_redige_cobrancas_de_contato_anonimizado` apaga a `descricao` na
+ * anonimização; este bloco é a outra metade — o que se apaga a pedido do
+ * titular é o que se entrega a pedido dele. Os ids do Asaas não saem: são
+ * ponteiros internos, não informação sobre a pessoa.
+ */
+export interface CobrancaAsaasRow {
+  forma: string;
+  valor_cents: number;
+  moeda: string;
+  vencimento: string;
+  descricao: string | null;
+  status: string;
+  pago_em: string | null;
+  created_at: string;
+}
+
 export interface ProposalRow {
   id: string;
   numero: number | null;
@@ -703,6 +721,8 @@ export interface ExportPayload {
   appointments: AppointmentRow[];
   sales: SaleRow[];
   proposals: ProposalRow[];
+  /** Cobranças do Asaas (WhatsMeta). */
+  cobrancas_asaas?: CobrancaAsaasRow[];
   tasks: TaskRow[];
   webhook_captures: CaptureRow[];
   audit_log_extract: AuditRow[];
@@ -1643,6 +1663,27 @@ export async function collectExportData(args: CollectArgs): Promise<ExportPayloa
     }
   }
 
+  // Cobranças do Asaas (WhatsMeta 9900) — contact_id direto. Ver CobrancaAsaasRow.
+  let cobrancas_asaas: CobrancaAsaasRow[] = [];
+  if (contactId) {
+    const { data, error } = await admin
+      .from("asaas_cobrancas")
+      .select("forma, valor_cents, moeda, vencimento, descricao, status, pago_em, created_at")
+      .eq("organization_id", organizationId)
+      .eq("contact_id", contactId)
+      .order("created_at", { ascending: false })
+      .limit(500);
+    if (error) {
+      logger.warn("[lgpd-export-worker] asaas_cobrancas load failed", {
+        request_id: requestId,
+        error: error.message,
+      });
+    } else if (data) {
+      conferirTeto("cobrancas_asaas", data, 500);
+      cobrancas_asaas = data as CobrancaAsaasRow[];
+    }
+  }
+
   // Empresas e pessoas (0448/0449) — ver o comentário do campo `b2b` no tipo.
   // A pessoa vem de `contacts.person_id`; as linhas de planilha casam pelo
   // contato OU pela pessoa, o MESMO escopo da redação da 0449. Erro lança:
@@ -2401,6 +2442,7 @@ export async function collectExportData(args: CollectArgs): Promise<ExportPayloa
     appointments,
     sales,
     proposals,
+    cobrancas_asaas,
     tasks,
     webhook_captures,
     audit_log_extract,
@@ -2598,6 +2640,7 @@ function emptyPayload(
     appointments: [],
     sales: [],
     proposals: [],
+    cobrancas_asaas: [],
     tasks: [],
     webhook_captures: [],
     audit_log_extract: [],

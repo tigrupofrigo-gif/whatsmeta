@@ -23,6 +23,7 @@
   "appointments": [],
   "sales": [],
   "proposals": [],
+  "cobrancas_asaas": [],
   "tasks": [],
   "webhook_captures": [],
   "audit_log_extract": [],

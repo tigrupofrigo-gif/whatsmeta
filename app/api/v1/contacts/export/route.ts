@@ -46,13 +46,15 @@ import { ApiError } from "@/lib/api/types";
 import { fail } from "@/lib/api/wrappers";
 import { requireRole } from "@/lib/auth/require-role";
 import {
-  csvDosContatos,
+  CABECALHO_DO_CSV,
+  linhaDoCsv,
   nomeDoArquivo,
-  vcardsDosContatos,
+  vcardDoContato,
   type ContatoParaExportar,
   type FormatoDeExport,
 } from "@/lib/contacts/exportar";
 import { traduzir } from "@/lib/i18n/dicionario";
+import { logger } from "@/lib/logger";
 import { contactListQuerySchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
 import type { Contact } from "@/lib/types/contacts";
@@ -63,8 +65,10 @@ export const dynamic = "force-dynamic";
 
 /** A página da lista é esta: é o teto do `limit` do `contactListQuerySchema`. */
 const TAMANHO_DA_PAGINA = 100;
-/** Mesmo teto do export de auditoria — cabe na memória do processo que serve o CRM. */
-const TETO_DO_EXPORT = 10_000;
+// SEM TETO (WhatsMeta). O teto de 10.000 existia porque o arquivo inteiro era
+// montado na memória antes de responder. Agora a resposta é um FLUXO: cada
+// página lida vira linhas escritas na hora, e a memória fica do tamanho de uma
+// página, qualquer que seja o tamanho da base.
 const FORMATOS: readonly FormatoDeExport[] = ["csv", "vcf"];
 
 /**
@@ -145,36 +149,7 @@ export async function GET(req: NextRequest): Promise<Response> {
     idioma: authz.user.idioma,
   };
 
-  const lidos: Contact[] = [];
-  const cpfs = new Map<string, string>();
-  let cursor: string | undefined;
-  let truncado = false;
-
-  try {
-    for (;;) {
-      const { contacts, cursor: proximo, has_more } = await listContactsHandler(
-        supabase,
-        ctx,
-        { ...filtros.data, cursor },
-      );
-      if (contacts.length === 0) break;
-      lidos.push(...contacts);
-      if (formato === "csv") await decifraCpfs(supabase, contacts, cpfs);
-      if (lidos.length >= TETO_DO_EXPORT) {
-        truncado = has_more || lidos.length > TETO_DO_EXPORT;
-        break;
-      }
-      if (!has_more || !proximo) break;
-      cursor = proximo;
-    }
-  } catch (err) {
-    if (err instanceof ApiError) {
-      return fail(err.code, err.message, err.status, { requestId });
-    }
-    throw err;
-  }
-
-  const contatos: ContatoParaExportar[] = lidos.slice(0, TETO_DO_EXPORT).map((c) => ({
+  const paraExportar = (c: Contact, cpfs: Map<string, string>): ContatoParaExportar => ({
     name: c.name,
     display_name: c.display_name,
     email: c.email,
@@ -182,42 +157,87 @@ export async function GET(req: NextRequest): Promise<Response> {
     cpf: cpfs.get(c.id) ?? null,
     birthdate: c.birthdate,
     tags: c.tags,
-  }));
+  });
 
-  const corpo = formato === "csv" ? csvDosContatos(contatos) : vcardsDosContatos(contatos);
+  // A PRIMEIRA página é lida antes de responder: erro de filtro ou de
+  // permissão ainda vira um 4xx legível, e não um arquivo vazio.
+  let primeira: Awaited<ReturnType<typeof listContactsHandler>>;
+  try {
+    primeira = await listContactsHandler(supabase, ctx, { ...filtros.data, cursor: undefined });
+  } catch (err) {
+    if (err instanceof ApiError) {
+      return fail(err.code, err.message, err.status, { requestId });
+    }
+    throw err;
+  }
 
-  await audit({
-    action: "contacts.exported",
-    actorUserId: authz.user.id,
-    organizationId: authz.org.orgId,
-    resourceType: "contact",
-    resourceId: null,
-    requestId,
-    metadata: {
-      actor_type: "user",
-      formato,
-      total: contatos.length,
-      truncado,
-      // O FILTRO, nunca o TEXTO do filtro: termo de busca é dado de quem foi
-      // buscado, e o audit de export existe para provar que saiu QUANTO, não
-      // para guardar quem a pessoa estava procurando.
-      filtros: {
-        busca: filtros.data.search !== undefined,
-        etiquetas: filtros.data.tag?.length ?? 0,
-        origem: filtros.data.source ?? null,
-        pessoais: filtros.data.pessoais,
+  const codificador = new TextEncoder();
+  let total = 0;
+  const auditar = (completo: boolean) =>
+    audit({
+      action: "contacts.exported",
+      actorUserId: authz.user.id,
+      organizationId: authz.org.orgId,
+      resourceType: "contact",
+      resourceId: null,
+      requestId,
+      metadata: {
+        actor_type: "user",
+        formato,
+        total,
+        // `truncado` mantém o nome do campo que o audit já tinha: agora só é
+        // verdade quando o fluxo foi interrompido no meio (rede, banco).
+        truncado: !completo,
+        // O FILTRO, nunca o TEXTO do filtro: termo de busca é dado de quem foi
+        // buscado, e o audit de export existe para provar que saiu QUANTO, não
+        // para guardar quem a pessoa estava procurando.
+        filtros: {
+          busca: filtros.data.search !== undefined,
+          etiquetas: filtros.data.tag?.length ?? 0,
+          origem: filtros.data.source ?? null,
+          pessoais: filtros.data.pessoais,
+        },
       },
+    });
+
+  const fluxo = new ReadableStream<Uint8Array>({
+    async start(controle) {
+      const escrever = (texto: string) => controle.enqueue(codificador.encode(texto));
+      try {
+        if (formato === "csv") escrever(`\uFEFF${CABECALHO_DO_CSV}\n`);
+        let pagina = primeira;
+        for (;;) {
+          const cpfs = new Map<string, string>();
+          if (formato === "csv") await decifraCpfs(supabase, pagina.contacts, cpfs);
+          for (const c of pagina.contacts) {
+            const contato = paraExportar(c, cpfs);
+            if (formato === "csv") escrever(`${linhaDoCsv(contato)}\n`);
+            else {
+              const cartao = vcardDoContato(contato);
+              if (cartao) escrever(cartao);
+            }
+            total += 1;
+          }
+          if (!pagina.has_more || !pagina.cursor || pagina.contacts.length === 0) break;
+          pagina = await listContactsHandler(supabase, ctx, { ...filtros.data, cursor: pagina.cursor });
+        }
+        await auditar(true);
+        controle.close();
+      } catch (err) {
+        logger.error("contacts.export.fluxo_interrompido", { request_id: requestId, erro: err instanceof Error ? err.message : String(err) });
+        await auditar(false);
+        controle.error(err);
+      }
     },
   });
 
-  return new Response(corpo, {
+  return new Response(fluxo, {
     status: 200,
     headers: {
       "Content-Type": formato === "csv" ? "text/csv; charset=utf-8" : "text/vcard; charset=utf-8",
       "Content-Disposition": `attachment; filename="${nomeDoArquivo(formato)}"`,
       "Cache-Control": "no-store",
       "X-Request-Id": requestId,
-      ...(truncado ? { "X-Export-Truncado": "true" } : {}),
     },
   });
 }

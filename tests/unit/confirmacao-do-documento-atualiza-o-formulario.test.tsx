@@ -34,6 +34,7 @@ vi.mock("@/hooks/leads/useLeadTimeline", () => ({
 vi.mock("@/components/kanban/ContatoDoNegocio", () => ({ ContatoDoNegocio: () => null }));
 vi.mock("@/components/kanban/TarefasDoNegocio", () => ({ TarefasDoNegocio: () => null }));
 vi.mock("@/components/kanban/PropostasDoNegocio", () => ({ PropostasDoNegocio: () => null }));
+vi.mock("@/components/kanban/CobrancasAsaasDoNegocio", () => ({ CobrancasAsaasDoNegocio: () => null }));
 vi.mock("@/components/kanban/ConversaNoDossie", () => ({ ConversaNoDossie: () => null }));
 vi.mock("@/components/kanban/ScoreSlot", () => ({ ScoreSlot: () => null }));
 vi.mock("@/components/kanban/OwnerBadge", () => ({ OwnerBadge: () => null }));

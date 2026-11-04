@@ -74,8 +74,9 @@ discordarem, vale o guia; quando o guia e `install.sh` discordarem, vale o insta
    admin. **A verificação em duas etapas é opcional** — liga em Configurações › Segurança. No
    onboarding, o WhatsApp é conectado por QR (deixe o app do celular já aberto em Aparelhos
    conectados; o QR vale poucos minutos).
-5. **Deixe pronto para durar:** backup diário no cron (`bash hostgator-setup-kit/backup.sh`; o
-   Supabase grátis não faz sozinho) e explique que atualizar é pela tela (menu → rodapé → "Nova
+5. **Deixe pronto para durar:** o instalador já agenda o backup automático (banco com as
+   conversas, sessões do WhatsApp e anexos) a cada 25 dias — `BACKUP_INTERVALO_DIAS` no `.env`
+   muda o intervalo; `BACKUP_FORCAR=1 bash hostgator-setup-kit/backup-agendado.sh` faz um agora. Explique que atualizar é pela tela (menu → rodapé → "Nova
    versão"); `bash hostgator-setup-kit/update.sh` é o caminho manual, com backup antes.
 
 ## Quando der problema (você resolve)
