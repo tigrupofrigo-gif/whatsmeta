@@ -20,10 +20,10 @@ export function useReactivateTenant() {
     onSuccess: (resposta, variables) => {
       void queryClient.invalidateQueries({ queryKey: ["admin", "tenant", variables.id] });
       void queryClient.invalidateQueries({ queryKey: ["admin", "tenants"] });
-      if (!avisarSeNadaMudou(resposta, t)) toast.success(t("Tenant reativado com sucesso"));
+      if (!avisarSeNadaMudou(resposta, t)) toast.success(t("Empresa reativada com sucesso"));
     },
     onError: (err: Error) => {
-      toast.error(t("Erro ao reativar tenant"), { description: err.message });
+      toast.error(t("Erro ao reativar a empresa"), { description: err.message });
     },
   });
 }

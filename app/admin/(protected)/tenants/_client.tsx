@@ -28,7 +28,7 @@ export function TenantsClient() {
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight">{t("Empresas")}</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            {isLoading ? t("Carregando...") : `${total} tenant${total !== 1 ? "s" : ""}${hasNextPage ? "+" : ""}`}
+            {isLoading ? t("Carregando...") : `${t(total === 1 ? "{n} empresa" : "{n} empresas").replace("{n}", String(total))}${hasNextPage ? "+" : ""}`}
           </p>
         </div>
         <Button asChild size="sm" className="shrink-0">

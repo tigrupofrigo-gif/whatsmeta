@@ -38,7 +38,7 @@ describe("suspender", () => {
     post.mockResolvedValue({ data: { changed: true } });
     const { result } = montar(useSuspendTenant);
     await act(async () => { await result.current.mutateAsync(PEDIDO); });
-    expect(toast.success).toHaveBeenCalledWith("Tenant suspenso com sucesso");
+    expect(toast.success).toHaveBeenCalledWith("Empresa suspensa com sucesso");
     expect(toast.info).not.toHaveBeenCalled();
   });
 
@@ -67,7 +67,7 @@ describe("reativar", () => {
     post.mockResolvedValue({ data: { changed: true } });
     const { result } = montar(useReactivateTenant);
     await act(async () => { await result.current.mutateAsync(PEDIDO); });
-    expect(toast.success).toHaveBeenCalledWith("Tenant reativado com sucesso");
+    expect(toast.success).toHaveBeenCalledWith("Empresa reativada com sucesso");
   });
 
   it("changed:false nao_suspensa → info com o motivo, nunca sucesso", async () => {

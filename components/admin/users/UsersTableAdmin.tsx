@@ -35,10 +35,10 @@ const ROLE_VARIANTS: Record<
 };
 
 const ROLE_LABELS: Record<string, string> = {
-  admin: "Admin",
-  manager: "Manager",
+  admin: "Administrador",
+  manager: "Gerente",
   agent: "Agente",
-  viewer: "Viewer",
+  viewer: "Visualizador",
 };
 
 function RoleBadge({ role }: { role: string }) {

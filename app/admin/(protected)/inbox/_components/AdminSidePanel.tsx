@@ -79,7 +79,7 @@ export function AdminSidePanel({ data }: Props) {
               href={`/admin/tenants/${organization.id}`}
               className="inline-flex items-center gap-1 text-xs font-medium text-primary underline-offset-2 hover:underline"
             >
-              Abrir tenant <ArrowRight size={12} aria-hidden />
+              {t("Abrir empresa")} <ArrowRight size={12} aria-hidden />
             </Link>
           </div>
         ) : (
